@@ -1,0 +1,13 @@
+D:\Programming\MyProjects\Exercises\Exercises\bin\Debug\Exercises.exe.config
+D:\Programming\MyProjects\Exercises\Exercises\bin\Debug\Exercises.exe
+D:\Programming\MyProjects\Exercises\Exercises\bin\Debug\Exercises.pdb
+D:\Programming\MyProjects\Exercises\Exercises\obj\Debug\Exercises.csprojAssemblyReference.cache
+D:\Programming\MyProjects\Exercises\Exercises\obj\Debug\Exercises.exe
+D:\Programming\MyProjects\Exercises\Exercises\obj\Debug\Exercises.pdb
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\bin\Debug\Exercises.exe.config
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\bin\Debug\Exercises.exe
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\bin\Debug\Exercises.pdb
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\obj\Debug\Exercises.csprojAssemblyReference.cache
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\obj\Debug\Exercises.csproj.CoreCompileInputs.cache
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\obj\Debug\Exercises.exe
+D:\Programming\MyProjects\Exercises\Exercises\Exercises\obj\Debug\Exercises.pdb
