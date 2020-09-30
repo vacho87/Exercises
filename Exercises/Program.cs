@@ -60,7 +60,7 @@ namespace Exercises
                 int NumberInput()
                 {
                     string input = Console.ReadLine();
-                    if (!int.TryParse(input, out int result))
+                    if (!int.TryParse(input, out int result)||result<=0)
                     {
                         Console.WriteLine("Error! Inputed data is incorrect. Please, enter even number");
                         NumberInput();
