@@ -8,19 +8,29 @@ namespace Exercises
 {
     class NumberInput
     {
+        int number;
         public int Input ()
         {
-            Console.WriteLine("Enter any arbitary even positive number");
+            Console.WriteLine("Enter any arbitary even (integer) positive number and press \"Enter\"");
             string input = Console.ReadLine();
-            int result;
-            while (!int.TryParse(input, out result)||result<=0)
+            while (!InputIsOk(input))
             {
-                Console.WriteLine("Error! Inputed data is incorrect. Please, enter even number");
+                Console.WriteLine("Error! Inputed data is incorrect. Please, enter arbitary even (integer) positive number");
                 input = Console.ReadLine();
             }
-            return result;
+            
+            return number;
         }
+
+        bool InputIsOk (string str)
+        {
+            if (int.TryParse(str, out int result) & result >= 1)
+            {
+                number = result;
+                return true;
+            }
+            else return false;
+        }
+
     }
 }
-
-

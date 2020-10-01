@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Exercises
 {
@@ -6,16 +10,16 @@ namespace Exercises
     {
         static void Main(string[] args)
         {
-            //Elementary/Exercise 1
+             //Elementary/Exercise 1
             {
-                Console.WriteLine("Hello world!");
+                //Console.WriteLine("Hello world!");
             }
 
             //Elementary/Exercise 2
             {
-                Console.WriteLine("Enter your name and press \"Enter\" ");
-                string name = Console.ReadLine();
-                Console.WriteLine($"Hi {name}!");
+                //Console.WriteLine("Enter your name and press \"Enter\" ");
+                //string name = Console.ReadLine();
+                //Console.WriteLine($"Hi {name}!");
             }
 
 
@@ -30,19 +34,9 @@ namespace Exercises
 
             //Elementary/Exercise 4
             {
-                //Console.WriteLine("Enter any arbitary even number");
                 //int sum = 0;
-                //int number = NumberInput();
-                //int NumberInput()
-                //{
-                //    string input = Console.ReadLine();
-                //    if (!int.TryParse(input, out int result))
-                //    {
-                //        Console.WriteLine("Error! Inputed data is incorrect. Please, enter even number");
-                //        NumberInput();
-                //    }
-                //    return result;
-                //}
+                //var inp = new NumberInput();
+                //int number = inp.Input();
                 //for (int i = number; i > 0; i--)
                 //{
                 //    sum += i;
@@ -54,34 +48,27 @@ namespace Exercises
             //Elementary/Exercise 5
 
             {
-                Console.WriteLine("Enter any arbitary even number");
-                int sum = 0;
-                int number = NumberInput();
-                int NumberInput()
-                {
-                    string input = Console.ReadLine();
-                    if (!int.TryParse(input, out int result)||result<=0)
-                    {
-                        Console.WriteLine("Error! Inputed data is incorrect. Please, enter even number");
-                        NumberInput();
-                    }
-                    return result;
-                }
-                for (int i = number; i > 0; i--)
-                {
-                    if (i % 3 == 0 || i % 5 == 0)
-                        sum += i;
-                }
-                Console.WriteLine($"sum of numbers from 1 to {number}, such that only multiples of three or five = {sum}");
+             //int sum = 0;
+             //NumberInput inp = new NumberInput();
+             //int number = inp.Input();
+                
+             //       for (int i = number; i > 0; i--)
+             //   {
+             //       if (i % 3 == 0 || i % 5 == 0)
+             //           sum += i;
+             //   }
+             //   Console.WriteLine($"sum of numbers from 1 to {number}, such that only multiples of three or five = {sum}");
 
             }
 
             //Elementary/Exercise 6
+            AskSumOrProduct.Ask();
 
 
 
 
             Console.ReadKey();
+
         }
     }
 }
