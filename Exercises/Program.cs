@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Remoting;
+using System.CodeDom;
 
 namespace Exercises
 {
@@ -62,9 +66,15 @@ namespace Exercises
             }
 
             //Elementary/Exercise 6
-            AskSumOrProduct.Ask();
-
-
+            //AskSumOrProduct.Ask();
+            Exercise6 ex = new Exercise6();
+            string num = "6";
+            string choise = $"Exercises.Exercise{num}";
+            ObjectHandle oh = Activator.CreateInstance("Exercises", choise);
+            var Ex = oh.Unwrap();
+            Console.WriteLine($"Type of Ex {Ex}");
+            var Ex1 = (Exercise6)Ex;// вот это приведение хотелось бы атоматизировать, ведь строкой выше я получил тип Ex
+            Ex1.Nothing();
 
 
             Console.ReadKey();

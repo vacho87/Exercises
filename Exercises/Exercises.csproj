@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AskSumOrProduct.cs" />
+    <Compile Include="Exercise6.cs" />
     <Compile Include="NumberInput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
