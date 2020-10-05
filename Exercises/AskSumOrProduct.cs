@@ -14,16 +14,14 @@ namespace Exercises
                               "For computing the product of numbers from 1 to ... n enter \"p\" and press \"Enter\" \n" +
                               "Or enter \"e\" and press \"Enter\" to exit");
             string input = Console.ReadLine();
-            while (input != "s" && input != "n" && input != "e")
+            while (input != "s" && input != "p" && input != "e")
             {
                 Console.WriteLine("Error!!! Inputed data is incorrect!\n" +
-                             "For computing the sum of numbers from 1 to ... n enter \"s\" and press \"Enter\" \n" +
-                             "For computing the product of numbers from 1 to ... n enter \"p\" and press \"Enter\" \n" +
-                             "Or enter \"e\" and press \"Enter\" to exit");
+                             "Enter \"s\", \"p\" or \"e\" and press \"Enter\" to exit");
                 input = Console.ReadLine();
             }
 
-
+            if (input == "e") Console.WriteLine("Task skipped");
             return input;
         }
     }

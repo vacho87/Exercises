@@ -5,7 +5,6 @@ using System.Runtime;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Remoting;
 using System.CodeDom;
 
 namespace Exercises
@@ -36,45 +35,10 @@ namespace Exercises
 
             }
 
-            //Elementary/Exercise 4
-            {
-                //int sum = 0;
-                //var inp = new NumberInput();
-                //int number = inp.Input();
-                //for (int i = number; i > 0; i--)
-                //{
-                //    sum += i;
-                //}
-                //Console.WriteLine($"sum of numbers from 1 to {number} = {sum}");
-            }
+            
+            var ob = new ExerciseRunner();
+            ob.Run();
 
-
-            //Elementary/Exercise 5
-
-            {
-             //int sum = 0;
-             //NumberInput inp = new NumberInput();
-             //int number = inp.Input();
-                
-             //       for (int i = number; i > 0; i--)
-             //   {
-             //       if (i % 3 == 0 || i % 5 == 0)
-             //           sum += i;
-             //   }
-             //   Console.WriteLine($"sum of numbers from 1 to {number}, such that only multiples of three or five = {sum}");
-
-            }
-
-            //Elementary/Exercise 6
-            //AskSumOrProduct.Ask();
-            Exercise6 ex = new Exercise6();
-            string num = "6";
-            string choise = $"Exercises.Exercise{num}";
-            ObjectHandle oh = Activator.CreateInstance("Exercises", choise);
-            var Ex = oh.Unwrap();
-            Console.WriteLine($"Type of Ex {Ex}");
-            var Ex1 = (Exercise6)Ex;// вот это приведение хотелось бы атоматизировать, ведь строкой выше я получил тип Ex
-            Ex1.Nothing();
 
 
             Console.ReadKey();

@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
-    static class NumberInput
+    static class ExerciseChooser
     {
-        static int number;
-        public static int Input ()
+        public static int number;
+        public static int AskChoice ()
         {
-            Console.WriteLine("Enter some arbitary integer positive number and press \"Enter\"");
+            Console.WriteLine("Enter Exercise number from the number 4 (4, 5, 6, etc.) and press \"Enter\"");
             string input = Console.ReadLine();
+                   
             while (!InputIsOk(input))
             {
-                Console.WriteLine("Error! Inputed data is incorrect. Please, enter some arbitary integer positive number");
+                Console.WriteLine("Error! Inputed data is incorrect. Please, enter some integer positive number from 4 to n");
                 input = Console.ReadLine();
             }
-            
+
             return number;
         }
 
-        static bool InputIsOk (string str)
+        static bool InputIsOk(string str)
         {
-            if (int.TryParse(str, out int result) & result >= 1)
+            if (int.TryParse(str, out int result) & result >= 4)
             {
                 number = result;
                 return true;
@@ -32,5 +33,7 @@ namespace Exercises
             else return false;
         }
 
+               
+        
     }
 }
