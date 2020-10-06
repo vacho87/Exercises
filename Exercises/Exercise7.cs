@@ -25,23 +25,26 @@ namespace Exercises
             Console.Write(borderLine);
 
 
-            StringBuilder sb = new StringBuilder("| factor|");
+            StringBuilder productTable = new StringBuilder("| factor|");
             for (int i = 0; i < 12; i++)
             {
-                sb.Append($"{i+1,-3}|");
+                string multiplierRowCell = $"{i + 1,-3}|";
+                productTable.Append(multiplierRowCell);
             }
-            sb.Append(borderLine);
+            productTable.Append(borderLine);
             for (int i=0;i<12;i++)
             {
-                sb.Append($"|{i + 1,-7}|");
+                string multiplierColumnCell = $"|{i + 1,-7}|";
+                productTable.Append(multiplierColumnCell);
                 for (int k=0;k<12;k++)
                 {
-                    sb.Append($"{(i + 1) * (k + 1),-3}|");
+                    string multiplicationResultCell = $"{(i + 1) * (k + 1),-3}|";
+                    productTable.Append(multiplicationResultCell);
                 }
-                sb.Append(borderLine);
+                productTable.Append(borderLine);
             }
 
-            Console.WriteLine(sb);
+            Console.WriteLine(productTable);
      
         }
     }

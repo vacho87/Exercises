@@ -19,12 +19,22 @@ namespace Exercises
             int sum = 0;
             int number = NumberInput.Input();
 
+            int RestrictedFactorial (int num)
+            {
+                if (num == 1) return 0;
+                if (num % 3 == 0 || num % 5 == 0)
+                    sum = num + RestrictedFactorial(num - 1);
+                else sum = RestrictedFactorial(num - 1);
+                
+                return sum;
+            }
+
             for (int i = number; i > 0; i--)
             {
                 if (i % 3 == 0 || i % 5 == 0)
                     sum += i;
             }
-            Console.WriteLine($"sum of numbers from 1 to {number}, such that only multiples of three or five = {sum}");
+            Console.WriteLine($"sum of numbers from 1 to {number}, such that only multiples of three or five = {RestrictedFactorial(number)}");
 
         }
     }

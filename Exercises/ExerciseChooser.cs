@@ -14,7 +14,7 @@ namespace Exercises
             Console.WriteLine("Enter Exercise number from the number 4 (4, 5, 6, etc.) and press \"Enter\"");
             string input = Console.ReadLine();
                    
-            while (!InputIsOk(input))
+            while (!InputIsCorrectExerciseNumber(input))
             {
                 Console.WriteLine("Error! Inputed data is incorrect. Please, enter some integer positive number from 4 to n");
                 input = Console.ReadLine();
@@ -23,7 +23,7 @@ namespace Exercises
             return number;
         }
 
-        static bool InputIsOk(string str)
+        static bool InputIsCorrectExerciseNumber(string str)
         {
             if (int.TryParse(str, out int result) & result >= 4)
             {

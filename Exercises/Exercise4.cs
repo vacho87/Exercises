@@ -16,11 +16,20 @@ namespace Exercises
         {
             int sum = 0;
             int number = NumberInput.Input();
-            for (int i = number; i > 0; i--)
+
+            int Factorial (int num)
             {
-                sum += i;
+                if (num == 1) return 1;
+                sum = num + Factorial(num - 1);
+                return sum;
             }
-            Console.WriteLine($"sum of numbers from 1 to {number} = {sum}");
+
+
+            //for (int i = number; i > 0; i--)
+            //{
+            //    sum += i;
+            //}
+            Console.WriteLine($"sum of numbers from 1 to {number} = {Factorial(number)}");
         }
     }
 }

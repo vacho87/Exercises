@@ -26,7 +26,13 @@ namespace Exercises
                    Console.WriteLine($"The product of the numbers from 1 to {number = NumberInput.Input()} = {Product(number)}");
                     break;
                 case "e":
-                    return;
+                    break;
+                default:
+                    {
+                        Console.WriteLine("Sorry, something went wrong. Let's try again.");
+                        ExerciseRun();
+                    }
+                    break;
             }
 
 

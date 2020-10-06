@@ -13,7 +13,7 @@ namespace Exercises
         {
             Console.WriteLine("Enter some arbitary integer positive number and press \"Enter\"");
             string input = Console.ReadLine();
-            while (!InputIsOk(input))
+            while (!InputIsCorrectExerciseNumber(input))
             {
                 Console.WriteLine("Error! Inputed data is incorrect. Please, enter some arbitary integer positive number");
                 input = Console.ReadLine();
@@ -22,7 +22,7 @@ namespace Exercises
             return number;
         }
 
-        static bool InputIsOk (string str)
+        static bool InputIsCorrectExerciseNumber (string str)
         {
             if (int.TryParse(str, out int result) & result >= 1)
             {
