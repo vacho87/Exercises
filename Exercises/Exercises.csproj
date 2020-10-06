@@ -50,6 +50,7 @@
     <Compile Include="Exercise6.cs" />
     <Compile Include="Exercise7.cs" />
     <Compile Include="Exercise8.cs" />
+    <Compile Include="Exercise9.cs" />
     <Compile Include="ExerciseChooser.cs" />
     <Compile Include="ExerciseRunner.cs" />
     <Compile Include="NumberInput.cs" />

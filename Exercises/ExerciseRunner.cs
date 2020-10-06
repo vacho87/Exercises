@@ -8,7 +8,7 @@ namespace Exercises
 {
     class ExerciseRunner
     {
-        public void Run ()
+        public void Run()
         {
             string choice = $"Exercises.Exercise{ExerciseChooser.AskChoice()}";
             System.Runtime.Remoting.ObjectHandle oh;
@@ -21,12 +21,15 @@ namespace Exercises
             catch
             {
                 Console.WriteLine($"Probably exercise with number {ExerciseChooser.number} has not yet been completed." +
-                    $"\n Let's try again. Please, enter another number more than 3, but less than  {ExerciseChooser.number}");
+                    $"\nLet's try again. Please, enter another number more than 3, but less than  {ExerciseChooser.number}");
                 Run();
             }
-           
-            
+            Console.WriteLine("If you want to run one more exercise press SPACE-key\n" +
+                "For escape press any other key\n");
+
+            if (Console.ReadKey(true).KeyChar == ' ') Run();
+
         }
-        
+
     }
 }

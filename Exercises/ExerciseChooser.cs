@@ -25,7 +25,7 @@ namespace Exercises
 
         static bool InputIsCorrectExerciseNumber(string str)
         {
-            if (int.TryParse(str, out int result) & result >= 4)
+            if (int.TryParse(str, out int result) && result >= 4)
             {
                 number = result;
                 return true;
