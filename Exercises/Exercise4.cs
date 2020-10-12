@@ -17,19 +17,19 @@ namespace Exercises
             int sum = 0;
             int number = NumberInput.Input();
 
-            int Factorial (int num)
+            for (int i = number; i > 0; i--)
+            {
+                sum += i;
+            }
+            Console.WriteLine($"sum of numbers from 1 to {number} (calculated by cicle) = {sum}");
+
+            int Factorial(int num)
             {
                 if (num == 1) return 1;
                 sum = num + Factorial(num - 1);
                 return sum;
-            }
-
-
-            //for (int i = number; i > 0; i--)
-            //{
-            //    sum += i;
-            //}
-            Console.WriteLine($"sum of numbers from 1 to {number} = {Factorial(number)}");
+            }          
+            Console.WriteLine($"sum of numbers from 1 to {number} (calculated by recursion) = {Factorial(number)}");
         }
     }
 }

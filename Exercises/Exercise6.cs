@@ -29,7 +29,7 @@ namespace Exercises
                     break;
                 default:
                     {
-                        Console.WriteLine("Sorry, something went wrong. Let's try again.");
+                        Console.WriteLine("Data you've inputted is incorrect. Let's try again.");
                         ExerciseRun();
                     }
                     break;
@@ -40,7 +40,7 @@ namespace Exercises
         int Sum (int number)
         {
             int sum=0;
-            for (;number>0;number--)
+            for ( ;number>0;number--)
             {
                 sum += number;
             }
@@ -50,7 +50,7 @@ namespace Exercises
         int Product (int number)
         {
             int product = 1;
-            for (;number>0;number--)
+            for ( ;number>0;number--)
             {
                 product *= number;
             }
