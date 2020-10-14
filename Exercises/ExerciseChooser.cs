@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
-    static class ExerciseChooser
+    public static class ExerciseChooser
     {
         public static int number;
         public static int AskChoice ()
@@ -23,7 +23,7 @@ namespace Exercises
             return number;
         }
 
-        static bool InputIsCorrectExerciseNumber(string str)
+        public static bool InputIsCorrectExerciseNumber(string str)
         {
             if (int.TryParse(str, out int result) && result >= 4)
             {

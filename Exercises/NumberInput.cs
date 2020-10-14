@@ -8,8 +8,8 @@ namespace Exercises
 {
     static class NumberInput
     {
-        static int number;
-        public static int Input ()
+        static uint number;
+        public static uint Input ()
         {
             Console.WriteLine("Enter some arbitary integer positive number and press \"Enter\"");
             string input = Console.ReadLine();
@@ -24,7 +24,7 @@ namespace Exercises
 
         static bool InputIsCorrectExerciseNumber (string str)
         {
-            if (int.TryParse(str, out int result) & result >= 1)
+            if (uint.TryParse(str, out uint result) && result >= 1)
             {
                 number = result;
                 return true;

@@ -8,6 +8,13 @@ namespace Exercises
 {
     class Exercise9 : Exercise
     {
+        /// <task_description>
+        /// 9.	Write a guessing game where the user has to guess a secret number.
+        /// After every guess the program tells the user whether their number was too large
+        /// or too small. At the end the number of tries needed should be printed. 
+        /// It counts only as one try if they input the same number multiple times consecutively.
+        /// </task_description>
+
         public override void ExerciseRun()
         {
             Console.WriteLine("!!!LET'S PLAY A GAME!!!");
@@ -31,7 +38,7 @@ namespace Exercises
                 "Input your guess and press \"Enter\"");
             var rnd = new Random();
             int thoughtNumber = rnd.Next(1, 100);
-            int guessNumber = NumberInput.Input();
+            int guessNumber = (int) NumberInput.Input();
             int previousGuessNumber;
             int tryCounter = 1;
             while (guessNumber!=thoughtNumber)
@@ -39,7 +46,7 @@ namespace Exercises
                 previousGuessNumber = guessNumber;
                 if (guessNumber < thoughtNumber) Console.WriteLine("Your number is TOO SMALL");
                 else Console.WriteLine("Your number is TOO LARGE");
-                guessNumber = NumberInput.Input();
+                guessNumber = (int) NumberInput.Input();
                 if (previousGuessNumber != guessNumber) tryCounter++;
             }
             Console.WriteLine("!!!CONGRATULATIONS, YOU WON!!!\n" +

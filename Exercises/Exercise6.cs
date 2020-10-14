@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
-    class Exercise6: Exercise
+    public class Exercise6: Exercise
     {
         /// <task_description>
         /// 6.Write a program that asks the user for a number n and gives them
@@ -16,7 +16,7 @@ namespace Exercises
         public override void ExerciseRun()
         {
             var choiсe = AskSumOrProduct.Ask();
-            int number;
+            uint number;
             switch (choiсe)
             {
                 case "s":
@@ -37,9 +37,9 @@ namespace Exercises
 
 
         }
-        int Sum (int number)
+        public ulong Sum (uint number)
         {
-            int sum=0;
+            ulong sum=0;
             for ( ;number>0;number--)
             {
                 sum += number;
@@ -47,9 +47,9 @@ namespace Exercises
            
             return sum ;
         }
-        int Product (int number)
+        public ulong Product (uint number)
         {
-            int product = 1;
+            ulong product = 1;
             for ( ;number>0;number--)
             {
                 product *= number;
