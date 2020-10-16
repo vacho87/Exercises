@@ -28,8 +28,7 @@ namespace Exercises
         {
             DateTime lastDayOfYear = new DateTime(currentDateTime.Year, 12, 31);
             bool isLeap;
-            if (lastDayOfYear.DayOfYear == 366) isLeap = true;
-            else isLeap = false;  
+            isLeap = lastDayOfYear.DayOfYear == 366 ? true : false;
             return isLeap;
         }
 
@@ -37,7 +36,7 @@ namespace Exercises
         {
             while (!CurrentYearIsLeap(date))
             {
-                date = new DateTime(date.Year + 1);
+                date = new DateTime(date.Year + 1,  date.Month, date.Day);
             }
             int nearrestLeapYear = date.Year;
             int[] next20LeapYears = new int[20];
