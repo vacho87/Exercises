@@ -52,6 +52,7 @@
     <Compile Include="AskSumOrProduct.cs" />
     <Compile Include="Exercise.cs" />
     <Compile Include="Exercise10.cs" />
+    <Compile Include="Exercise11.cs" />
     <Compile Include="Exercise4.cs" />
     <Compile Include="Exercise5.cs" />
     <Compile Include="Exercise6.cs" />
