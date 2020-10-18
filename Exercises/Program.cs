@@ -36,14 +36,28 @@ namespace Exercises
             }
 
             
-            var ob = new ExerciseRunner();
-            ob.Run();
+            //var ob = new ExerciseRunner();
+            //ob.Run();
 
+
+            Operation op;
+            op = Operation.Add;
+            Console.WriteLine(op); // Add
 
 
             Console.ReadKey();
 
         }
+
+        enum Operation
+        {
+            Add = 1,
+            Subtract,
+            Multiply,
+            Divide
+        }
+
+
     }
 }
  

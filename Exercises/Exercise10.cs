@@ -28,7 +28,7 @@ namespace Exercises
         {
             DateTime lastDayOfYear = new DateTime(currentDateTime.Year, 12, 31);
             bool isLeap;
-            isLeap = lastDayOfYear.DayOfYear == 366 ? true : false;
+            isLeap = lastDayOfYear.DayOfYear == 366;
             return isLeap;
         }
 
