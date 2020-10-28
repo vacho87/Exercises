@@ -38,7 +38,7 @@ namespace Exercises.Tests
             int[] correctResult = new int[] { 2024, 2028, 2032, 2036, 2040, 2044, 2048, 2052, 2056, 2060, 2064, 2068, 2072, 2076, 2080, 2084, 2088, 2092, 2096, 2100 };
             DateTime year = new DateTime(2021, 01, 01);
             // Act
-            int[] result = Exercise10.ReturnNext20LeapYears(year); //  Вот эта инструкция вызывает повисание прохождения теста... (???)
+            int[] result = Exercise10.ReturnNext20LeapYears(year); 
             //Assert
             Assert.AreEqual(result, correctResult);
         }
