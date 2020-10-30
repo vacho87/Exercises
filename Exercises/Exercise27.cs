@@ -8,6 +8,10 @@ namespace Exercises
 {
     public class Exercise27 : Exercise
     {
+        // <task_description>
+        /// 7.	Write three functions that compute the sum of the numbers in a list:
+        /// using a for-loop, a while-loop and recursion.
+        /// </task_description>
         public override void ExerciseRun()
         {
             List <int>  list = new List<int> { 1, 2, 3, 4, 5 };
