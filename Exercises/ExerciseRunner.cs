@@ -16,7 +16,7 @@ namespace Exercises
             {
                 oh = Activator.CreateInstance("Exercises", choice);
                 var Ex = (Exercise)oh.Unwrap();
-                Ex.ExerciseRun();
+                 Ex.ExerciseRun();
             }
             catch
             {

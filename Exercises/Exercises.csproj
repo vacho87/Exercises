@@ -59,6 +59,7 @@
     <Compile Include="Exercise24.cs" />
     <Compile Include="Exercise25.cs" />
     <Compile Include="Exercise26.cs" />
+    <Compile Include="Exercise27.cs" />
     <Compile Include="Exercise4.cs" />
     <Compile Include="Exercise5.cs" />
     <Compile Include="Exercise6.cs" />
