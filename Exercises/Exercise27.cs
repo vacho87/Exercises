@@ -42,17 +42,17 @@ namespace Exercises
             }
             return result;
         }
-        int result = 0;
+        
         public int CountSummWithRecursion (List<int> list, int index=0)
         {
+            int result = 0;
             if (index == list.Count - 1)
             {
                return list[index];
             }
             else
-            {
-                index++;
-                result += CountSummWithRecursion(list, index);
+            {                
+                result += CountSummWithRecursion(list, ++index);
             }
             return result;
         }
