@@ -49,8 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exercise10Tests.cs" />
+    <Compile Include="Exercise21Test.cs" />
+    <Compile Include="Exercise22Test.cs" />
+    <Compile Include="Exercise23Test.cs" />
+    <Compile Include="Exercise24Test.cs" />
+    <Compile Include="Exercise25Test.cs" />
+    <Compile Include="Exercise26Test.cs" />
     <Compile Include="Exercise6Test.cs" />
-    <Compile Include="Exercise11.Tests.cs" />
+    <Compile Include="Exercise11Tests.cs" />
     <Compile Include="HelpersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

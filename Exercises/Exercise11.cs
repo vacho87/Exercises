@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Exercises.Performance;
 
 namespace Exercises
 {
@@ -35,25 +38,31 @@ namespace Exercises
             // для возможности визуального измерения времени выполнения
             Console.Write("Sum of row of expressions of the form (-1) ^ (k + 1) / (2 * k - 1) \n" +
                           " for k=1 to 100 000 000, calculated by ExpressionValueCalc method: ");
-            for (int k = 1; k <= 100000000; k++)
+            
+            using (new Step($"ExpressionValueCalc for {1000000:N}"))
             {
-                result += ExpressionValueCalc(k);
+                for (int k = 1; k <= 1000000; k++)
+                {
+                    result += ExpressionValueCalc(k);
+                }
+                Console.WriteLine(result*4);
             }
-            Console.WriteLine(result*4);
 
             result = 0;
             Console.Write("Sum of row of expressions of the form (-1) ^ (k + 1) / (2 * k - 1) \n" +
                           " for k=1 to 100 000 000, calculated by ExpressionValueSmartCalc method: ");
-            for (int k = 1; k <= 100000000; k++)
+            using (new Step($"ExpressionValueCalc for {1000000:N}"))
             {
-                result += ExpressionValueSmartCalc(k);
+                for (int k = 1; k <= 1000000; k++)
+                {
+                    result += ExpressionValueSmartCalc(k);
+                }
+                Console.WriteLine(result*4);
             }
-            Console.WriteLine(result*4);
-
 
             Console.Write("Sum of row of expressions of the form(-1) ^ (k + 1) / (2 * k - 1) \n" +
-                          " for k=1 to 100 000 000, calculated by ExpressionValueSmartCalc method: ");
-            Console.WriteLine(TheSmartestCalc(100000000));
+                          " for k=1 to 1 000 000, calculated by ExpressionValueSmartCalc method: ");
+            Console.WriteLine(TheSmartestCalc(1000000));
 
         }
 
