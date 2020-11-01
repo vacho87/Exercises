@@ -11,12 +11,16 @@ namespace Exercises
         public static int number;
         public static int AskChoice ()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Enter Exercise number from the number 4 (4, 5, 6, etc.) and press \"Enter\"");
+            Console.ResetColor();
             string input = Console.ReadLine();
                    
             while (!InputIsCorrectExerciseNumber(input))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Error! Inputed data is incorrect. Please, enter some integer positive number from 4 to n");
+                Console.ResetColor();
                 input = Console.ReadLine();
             }
 

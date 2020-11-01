@@ -15,14 +15,14 @@ namespace Exercises
         public override void ExerciseRun()
         {
             List <int>  list = new List<int> { 1, 2, 3, 4, 5 };
-            Console.WriteLine(CountSummWithRecursion(list));
-            Console.WriteLine(CountSummWithForCycle(list));
-            Console.WriteLine(CountSummWithWhileCycle(list));
+            Exercise22.ShowList(list);
 
-
+            Console.WriteLine($"\nThe sum of all elements un list, counted with CountSumWithRecursion metod is {CountSumWithRecursion(list)}");
+            Console.WriteLine($"\nThe sum of all elements un list, counted with CountSumWithForCycle metod is {CountSumWithForCycle(list)}");
+            Console.WriteLine($"\nThe sum of all elements un list, counted with CountSumWithWhileCycle metod is {CountSumWithWhileCycle(list)}");
         }
 
-        public int CountSummWithForCycle (List<int> list)
+        public static int CountSumWithForCycle (List<int> list)
         {
             int result =0;
             for (int i=0; i<list.Count; i++)
@@ -31,7 +31,7 @@ namespace Exercises
             }
             return result;
         }
-        public int CountSummWithWhileCycle (List <int> list)
+        public static int CountSumWithWhileCycle (List <int> list)
         {
             int result = 0;
             int i = 0;
@@ -43,20 +43,18 @@ namespace Exercises
             return result;
         }
         
-        public int CountSummWithRecursion (List<int> list, int index=0)
+        public static int CountSumWithRecursion(List<int> list, int index = 0)
         {
-            int result = 0;
+            
             if (index == list.Count - 1)
             {
-               return list[index];
+                return list[index];
             }
             else
-            {                
-                result += CountSummWithRecursion(list, ++index);
+            {
+              return list[index] + CountSumWithRecursion(list, ++index);
             }
-            return result;
+           
         }
-
-
     }
 }

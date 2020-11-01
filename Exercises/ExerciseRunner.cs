@@ -20,12 +20,16 @@ namespace Exercises
             }
             catch
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Probably exercise with number {ExerciseChooser.number} has not yet been completed." +
                     $"\nLet's try again. Please, enter another number more than 3, but less than  {ExerciseChooser.number}");
+                Console.ResetColor();
                 Run();
             }
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("If you want to run one more exercise press SPACE-key\n" +
                 "For escape press any other key\n");
+            Console.ResetColor();
 
             if (Console.ReadKey(true).KeyChar == ' ') Run();
 
