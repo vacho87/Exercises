@@ -23,14 +23,14 @@ namespace Exercises
         public override void ExerciseRun()
         {
             List<int> list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-            Exercise22.ShowListOfInt(list);
+            Exercise22.ShowList(list);
             bool delegateMethodIsSet = SetDelegateMethod();
             if (delegateMethodIsSet)
             {
                 List <int> processedList = On_All(list, deleg);
                 if (deleg == ReturnPowerOfTwo) Console.WriteLine("The first 20 perfect squares are: ");
                 if (deleg == ReturnPowerofThree) Console.WriteLine("The first 20 perfect cubes are: ");
-                Exercise22.ShowListOfInt(processedList);
+                Exercise22.ShowList(processedList);
             }
             
         }

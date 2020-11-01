@@ -14,7 +14,7 @@ namespace Exercises
         public override void ExerciseRun()
         {
             List<int> list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
-            Exercise22.ShowListOfInt(list);
+            Exercise22.ShowList(list);
             Console.WriteLine();
 
             if (ContainsElement(list, 3)) Console.WriteLine("Element \"3\" occures in list. \n");

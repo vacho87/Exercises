@@ -15,7 +15,7 @@ namespace Exercises
         public override void ExerciseRun()
         {
             List <int>  list = new List<int> { 1, 2, 3, 4, 5 };
-            Exercise22.ShowListOfInt(list);
+            Exercise22.ShowList(list);
 
             Console.WriteLine($"\nThe sum of all elements un list, counted with CountSumWithRecursion metod is {CountSumWithRecursion(list)}");
             Console.WriteLine($"\nThe sum of all elements un list, counted with CountSumWithForCycle metod is {CountSumWithForCycle(list)}");

@@ -18,23 +18,23 @@ namespace Exercises
             List<int> numList = new List<int> { 0, 1, 2, 3, 4, 5 };
 
             Console.WriteLine("Before reversing");
-            ShowListOfInt(numList);
+            ShowList(numList);
 
             ReverseList(numList);
             Console.WriteLine("After reversing");
-            ShowListOfInt(numList);
+            ShowList(numList);
 
             Console.WriteLine("And now the list was back-reversed by native method Reverse:");
             numList.Reverse();
-            ShowListOfInt(numList);
+            ShowList(numList);
 
             List<int> anotherNumberList = new List<int> { 10, 11, 12, 13, 14 };
             Console.WriteLine("One more list before reversing");
-            ShowListOfInt(anotherNumberList);
+            ShowList(anotherNumberList);
 
             ReverseList(anotherNumberList);
             Console.WriteLine("And after");
-            ShowListOfInt(anotherNumberList);
+            ShowList(anotherNumberList);
 
             Console.WriteLine();
         }
@@ -62,21 +62,21 @@ namespace Exercises
             return list;
         }
         
-        public static void ShowListOfInt (List <int> list, string listName = "")
+        public static void ShowList (List <int> list, string listName = "")
         {
             Console.Write ($"list {listName} contains: ");
             foreach (int number in list) Console.Write($" {number},");
             Console.WriteLine();
         }
 
-        public static void ShowListofChar (List<char> list, string listName = "")
+        public static void ShowList (List<char> list, string listName = "")
         {
             Console.Write($"list {listName} contains: ");
             foreach (char symbol in list) Console.Write($" {symbol},");
             Console.WriteLine();
         }
 
-        public static void ShowListofObject (List<object> list, string listName = "")
+        public static void ShowList (List<object> list, string listName = "")
         {
             Console.Write($"list {listName} contains: ");
             foreach (object obj in list) Console.Write($" {obj},");

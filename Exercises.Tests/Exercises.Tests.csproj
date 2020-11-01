@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exercise10Tests.cs" />
+    <Compile Include="Exercise210Test.cs" />
     <Compile Include="Exercise21Test.cs" />
     <Compile Include="Exercise22Test.cs" />
     <Compile Include="Exercise23Test.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Exercise26Test.cs" />
     <Compile Include="Exercise27Test.cs" />
     <Compile Include="Exercise28Test.cs" />
+    <Compile Include="Exercise29Test.cs" />
     <Compile Include="Exercise6Test.cs" />
     <Compile Include="Exercise11Tests.cs" />
     <Compile Include="HelpersTests.cs" />
