@@ -15,11 +15,11 @@ namespace Exercises
         {
             List<int> sourceList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             Console.WriteLine("The source list looks like that:\n");
-            Exercise22.ShowList(sourceList);
+            Exercise22.ShowListOfInt(sourceList);
 
             List<int> resultList = ReturnElementsOnOddPosition(sourceList);
             Console.WriteLine("The result list, that contains members of source list that hold on odd positions:\n");
-            Exercise22.ShowList(resultList);
+            Exercise22.ShowListOfInt(resultList);
         }
         public static List <int> ReturnElementsOnOddPosition (List<int> sourceList)
         {

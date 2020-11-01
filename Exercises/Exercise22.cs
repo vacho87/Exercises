@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,23 +18,23 @@ namespace Exercises
             List<int> numList = new List<int> { 0, 1, 2, 3, 4, 5 };
 
             Console.WriteLine("Before reversing");
-            ShowList(numList);
+            ShowListOfInt(numList);
 
             ReverseList(numList);
             Console.WriteLine("After reversing");
-            ShowList(numList);
+            ShowListOfInt(numList);
 
             Console.WriteLine("And now the list was back-reversed by native method Reverse:");
             numList.Reverse();
-            ShowList(numList);
+            ShowListOfInt(numList);
 
             List<int> anotherNumberList = new List<int> { 10, 11, 12, 13, 14 };
             Console.WriteLine("One more list before reversing");
-            ShowList(anotherNumberList);
+            ShowListOfInt(anotherNumberList);
 
             ReverseList(anotherNumberList);
             Console.WriteLine("And after");
-            ShowList(anotherNumberList);
+            ShowListOfInt(anotherNumberList);
 
             Console.WriteLine();
         }
@@ -61,13 +62,27 @@ namespace Exercises
             return list;
         }
         
-        public static void ShowList (List <int> list)
+        public static void ShowListOfInt (List <int> list, string listName = "")
         {
-            Console.Write ($"list contains: ");
+            Console.Write ($"list {listName} contains: ");
             foreach (int number in list) Console.Write($" {number},");
             Console.WriteLine();
         }
-        
+
+        public static void ShowListofChar (List<char> list, string listName = "")
+        {
+            Console.Write($"list {listName} contains: ");
+            foreach (char symbol in list) Console.Write($" {symbol},");
+            Console.WriteLine();
+        }
+
+        public static void ShowListofObject (List<object> list, string listName = "")
+        {
+            Console.Write($"list {listName} contains: ");
+            foreach (object obj in list) Console.Write($" {obj},");
+            Console.WriteLine();
+        }
+
 
     }
 }
