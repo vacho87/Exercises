@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,11 @@ namespace Exercises
                 if (deleg == ReturnPowerOfTwo) Console.WriteLine("The first 20 perfect squares are: ");
                 if (deleg == ReturnPowerofThree) Console.WriteLine("The first 20 perfect cubes are: ");
                 Exercise22.ShowList(processedList);
+
+                var result1 = On_AllExpression(list, number => number * number);
+                var result2 = On_AllFunc(list, number => number * number);
+                var result3 = On_All(list, number => number * number);
+                var result4 = list.Select(number => number * number).ToList();
             }
 
         }
@@ -79,6 +85,22 @@ namespace Exercises
             return processedList;
                        
             
+        }
+
+        public List<int> On_AllFunc(List<int> list, Func<int, int> @delegate)
+        {             
+            List<int> processedList = new List<int>();
+            foreach (int item in list)
+                processedList.Add(@delegate(item));
+            return processedList;
+        }
+
+        public List<int> On_AllExpression(List<int> list, Expression<SquareOrCubeDelegate> @delegate)
+        {             
+            List<int> processedList = new List<int>();
+            foreach (int item in list)
+                processedList.Add(@delegate.Compile().Invoke(item));
+            return processedList;
         }
 
     }
