@@ -31,8 +31,22 @@ namespace Exercises
                 if (deleg == ReturnPowerOfTwo) Console.WriteLine("The first 20 perfect squares are: ");
                 if (deleg == ReturnPowerofThree) Console.WriteLine("The first 20 perfect cubes are: ");
                 Exercise22.ShowList(processedList);
+<<<<<<< Updated upstream
+=======
+
+                var result1 = On_AllExpression(list, number => number * number);
+                var result2 = On_AllFunc(list, number => number * number);
+                var result3 = On_All(list, number => number * number);
+                var result4 = list.Select(number => number * number).ToList();
+
+                Exercise22.ShowList(result1);
+                Exercise22.ShowList(result2);
+                Exercise22.ShowList(result3);
+                Exercise22.ShowList(result4);
+
+>>>>>>> Stashed changes
             }
-            
+
         }
 
         public int ReturnPowerOfTwo (int number)
