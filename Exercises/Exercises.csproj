@@ -55,6 +55,11 @@
     <Compile Include="Exercise11.cs" />
     <Compile Include="Exercise21.cs" />
     <Compile Include="Exercise210.cs" />
+    <Compile Include="Exercise211.cs" />
+    <Compile Include="Exercise212.cs" />
+    <Compile Include="Exercise213.cs" />
+    <Compile Include="Exercise214.cs" />
+    <Compile Include="Exercise215.cs" />
     <Compile Include="Exercise22.cs" />
     <Compile Include="Exercise23.cs" />
     <Compile Include="Exercise24.cs" />
@@ -71,6 +76,7 @@
     <Compile Include="Exercise9.cs" />
     <Compile Include="ExerciseChooser.cs" />
     <Compile Include="ExerciseRunner.cs" />
+    <Compile Include="ListExtension.cs" />
     <Compile Include="NumberInput.cs" />
     <Compile Include="Performance\Step.cs" />
     <Compile Include="Program.cs" />

@@ -15,7 +15,7 @@ namespace Exercises
             string input = Console.ReadLine();
             while (!InputIsCorrectExerciseNumber(input))
             {
-                Console.WriteLine("Error! Inputed data is incorrect. Please, enter some arbitary integer positive number");
+                Console.WriteLine("Error! Entered data is incorrect. Please, enter some arbitary integer positive number");
                 input = Console.ReadLine();
             }
             

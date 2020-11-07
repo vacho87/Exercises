@@ -12,7 +12,7 @@ namespace Exercises
         public static int AskChoice ()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nEnter Exercise number from the number 4 (4, 5, 6, etc.) and press \"Enter\"");
+            Console.WriteLine("\nEnter Exercise number from the number 4 (4, 5, 6, etc.) and press \"Enter\"\n");
             Console.ResetColor();
             string input = Console.ReadLine();
                    

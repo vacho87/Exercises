@@ -26,27 +26,21 @@ namespace Exercises
         {
             List<object> mixedList = new List<object>();
             
-            int smallerCount = list1.Count();
-            int largerCount = list2.Count();
-            var largerList = list2;
-            if (smallerCount > list2.Count())
-            {
-                smallerCount = list2.Count();
-                largerCount = list1.Count();
-                largerList = list1;
-            }
-            for (int i=0; i<smallerCount; i++)
+            int smallerListCount = list1.Count < list2.Count ? list1.Count : list2.Count; // Попробовал сделать меньше слов
+            int largerListCount = smallerListCount == list1.Count ? list2.Count : list1.Count; // Попробовал сделать меньше слов
+            var largerList = largerListCount==list1.Count ? list1 : list2; // Попробовал сделать меньше слов
+            for (int i=0; i<smallerListCount; i++)
             {
                 mixedList.Add(list1[i]);
                 mixedList.Add(list2[i]);
             }
-            for (int i = smallerCount; i<largerCount; i++)
+            for (int i = smallerListCount; i<largerListCount; i++)
             {
                 mixedList.Add(largerList[i]);
             }
             return mixedList;
         }
 
-
+         
     }
 }
