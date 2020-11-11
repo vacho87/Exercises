@@ -122,5 +122,63 @@ namespace Exercises
             Console.Write($"{list[list.Count-1]}\n");
         }
 
+
+        /// <summary>
+        /// Compares two positive(!) numbers in their digit-list representation
+        /// for their value
+        /// </summary>
+        /// <param name="listDigits"></param>
+        /// <param name="comparedDigitsList"></param>
+        /// <returns>true if number, represented in list is not smaller than
+        /// number, represented in comparedDigitsList</returns>
+        public static bool IsNotSmallerThan(this List<int> listDigits, List<int> comparedDigitsList)
+        {
+            if (listDigits.Count > comparedDigitsList.Count)
+            {
+                return true;
+            }
+
+            else if (comparedDigitsList.Count > listDigits.Count)
+            {
+                return false;
+            }
+
+            else
+            {
+                for (int i = 0; i < listDigits.Count; i++)
+                {
+                    if (comparedDigitsList[i] > listDigits[i])
+                    {
+                        return false;
+                    }
+                    if (listDigits[i] > comparedDigitsList[i])
+                    {
+                        return true;
+                    }
+
+
+                }
+
+                return true;
+            }
+
+        }
+
+
+        public static bool IsSmallerThan (this List<int> list, List<int> comparedDigitsList)
+        {
+            if (list.IsNotSmallerThan(comparedDigitsList))
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
+
+
     }
 }

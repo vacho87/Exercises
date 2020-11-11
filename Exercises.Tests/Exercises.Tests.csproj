@@ -51,6 +51,7 @@
     <Compile Include="Exercise10Tests.cs" />
     <Compile Include="Exercise210Test.cs" />
     <Compile Include="Exercise211Test.cs" />
+    <Compile Include="Exercise215Test.cs" />
     <Compile Include="Exercise21Test.cs" />
     <Compile Include="Exercise22Test.cs" />
     <Compile Include="Exercise23Test.cs" />

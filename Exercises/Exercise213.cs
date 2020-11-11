@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
-    // <task_description>
+    /// <task_description>
     /// 13.	Write a function that computes the list of the first 100
     /// Fibonacci numbers. The first two Fibonacci numbers are 1 and 1.
     /// The n+1-st Fibonacci number can be computed by adding the n-th

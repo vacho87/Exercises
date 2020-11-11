@@ -17,12 +17,16 @@ namespace Exercises
         public override void ExerciseRun()
         {
             List<int> list = DecomposeNumber(AskForNumber());
-            Console.WriteLine("The numberwas decomposed to digits, which were put in list");
+            Console.WriteLine("The number was decomposed to digits, which were put in list");
             list.ShowList();
         }
 
         public static List<int> DecomposeNumber(int number)
         {
+            if (number == 0)
+            {
+                return new List<int> { 0 };
+            }
             List<int> listOfDigitsOfNumber = new List<int>();
             while (number != 0)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
-    // <task_description>
+    /// <task_description>
     /// 12.	Write a function that rotates a list by k elements.
     /// For example [1,2,3,4,5,6] rotated by two becomes [3,4,5,6,1,2].
     /// Try solving this without creating a copy of the list.
