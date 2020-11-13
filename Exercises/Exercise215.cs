@@ -31,14 +31,20 @@ namespace Exercises
 
             List<int> SUM = AddTwoNumbersDigits(decomposedFirstNumber, decomposedSecondNumber);
             SUM.ShowList("RESULT OF ADDITION");
+            decomposedFirstNumber.ShowList("decomposedFirstNumber");
+            decomposedSecondNumber.ShowList("decomposedSecondNumber");
             Console.WriteLine();
 
             List<int> PROD = MultiplyTwoNumbersDigits(decomposedFirstNumber, decomposedSecondNumber);
             PROD.ShowList("RESULT OF MULTIPLYING");
+            decomposedFirstNumber.ShowList("decomposedFirstNumber");
+            decomposedSecondNumber.ShowList("decomposedSecondNumber");
             Console.WriteLine();
 
             List<int> SUBTR = SubtractTwoNumbersDigits(decomposedFirstNumber, decomposedSecondNumber);
-            SUBTR.ShowList("RESULT OF SUBTRACTION");            
+            SUBTR.ShowList("RESULT OF SUBTRACTION");
+            decomposedFirstNumber.ShowList("decomposedFirstNumber");
+            decomposedSecondNumber.ShowList("decomposedSecondNumber");
             Console.WriteLine();
         }
 
@@ -155,6 +161,8 @@ namespace Exercises
         /// <returns>List of integers that contains sum of addend1Digits and addend2Digits</returns>
         public static List<int> UseSimpleAddition(List<int> addend1Digits, List<int> addend2Digits)
         {
+            addend1Digits = new List<int>(addend1Digits); // For saving argument back to it's initial state
+            addend2Digits = new List<int>(addend2Digits); // For saving argument back to it's initial state
             EqualizeNUmberOfDigitsInTwoDigitsLists(addend1Digits, addend2Digits);
             addend1Digits.Reverse();
             addend2Digits.Reverse();
@@ -175,10 +183,7 @@ namespace Exercises
             {
                 sumDigits.Add(nextDigitIncrement);
             }
-
-            addend1Digits.Reverse(); // get argument back to it's initial state
-            addend2Digits.Reverse(); // get argument back to it's initial state
-
+                        
             PrepareResultListOfDigitsToReturn(sumDigits);
             return sumDigits;
         }
@@ -240,7 +245,15 @@ namespace Exercises
 
         public static bool IsNumberInListPositive(List<int> list)
         {
-            if (list[list.Count - 1] > 0)
+            // !!!!! if (list[list.Count - 1] > 0)
+            // вот зесь крылся корень всех зол
+            // дело в том, что в методах самих арифметических операций шла работа с реверснутыми списками
+            // и в этом методе я по привычке сделал  проверку последнего элемента, ошибочно полагая,
+            // что это старший разряд числа, хотя на самом деле это младший разряд. 
+            // Естественно, что младший  разряд в числе (в отличие от старшего) может быть равным нулю,
+            // что и вело к интерпертации этим методом числа, скажем 150, как отрицательного, со всеми вытекающими
+            // по цепочке неверными последующими шагами в алгоритме
+            if (list[0] > 0)
             {
                 return true;
             }

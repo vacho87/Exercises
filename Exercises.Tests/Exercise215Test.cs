@@ -163,6 +163,14 @@ namespace Exercises.Tests
             List<int> subtrahend5 = new List<int> { 2, 7 };
             List<int> expectedRemainder5 = new List<int> { 8 };
 
+            List<int> minuend6 = new List<int> { 1, 5, 0 };
+            List<int> subtrahend6 = new List<int> { -2, -3 };
+            List<int> expectedRemainder6 = new List<int> { 1, 7, 3 };
+
+            List<int> minuend7 = new List<int> { 1, 5, 0 };
+            List<int> subtrahend7 = new List<int> { 2, 7 };
+            List<int> expectedRemainder7 = new List<int> { 1, 2, 3 };
+
 
             List<int> remainder = Exercise215.UseSimpleSubtraction(minuend, subtrahend);
             List<int> remainder1 = Exercise215.UseSimpleSubtraction(minuend1, subtrahend1);
@@ -170,6 +178,8 @@ namespace Exercises.Tests
             List<int> remainder3 = Exercise215.UseSimpleSubtraction(minuend3, subtrahend3);
             List<int> remainder4 = Exercise215.UseSimpleSubtraction(minuend4, subtrahend4);
             List<int> remainder5 = Exercise215.UseSimpleSubtraction(minuend5, subtrahend5);
+            List<int> remainder6 = Exercise215.UseSimpleSubtraction(minuend6, subtrahend6);
+            List<int> remainder7 = Exercise215.UseSimpleSubtraction(minuend7, subtrahend7);
 
 
             Assert.AreEqual(expectedRemainder, remainder);
@@ -178,6 +188,8 @@ namespace Exercises.Tests
             Assert.AreEqual(expectedRemainder3, remainder3);
             Assert.AreEqual(expectedRemainder4, remainder4);
             Assert.AreEqual(expectedRemainder5, remainder5);
+            Assert.AreEqual(expectedRemainder6, remainder6);
+            Assert.AreEqual(expectedRemainder7, remainder7);
         }
 
 
@@ -200,17 +212,25 @@ namespace Exercises.Tests
             List<int> secondAddend3 = new List<int> { 9, 9, 9 };
             List<int> expectedSumm3 = new List<int> { 1, 0, 0, 1 };
 
+            List<int> firstAddend4 = new List<int> { 1, 5, 0 };
+            List<int> secondAddend4 = new List<int> { 2, 3 };
+            List<int> expectedSumm4 = new List<int> { 1, 7, 3 };
+
+
 
             List<int> sum = Exercise215.UseSimpleAddition(firstAddend, secondAddend);
             List<int> sum1 = Exercise215.UseSimpleAddition(firstAddend1, secondAddend1);
             List<int> sum2 = Exercise215.UseSimpleAddition(firstAddend2, secondAddend2);
             List<int> sum3 = Exercise215.UseSimpleAddition(firstAddend3, secondAddend3);
+            List<int> sum4 = Exercise215.UseSimpleAddition(firstAddend4, secondAddend4);
 
 
             Assert.AreEqual(expectedSumm, sum);
             Assert.AreEqual(expectedSumm1, sum1);
             Assert.AreEqual(expectedSumm2, sum2);
             Assert.AreEqual(expectedSumm3, sum3);
+            Assert.AreEqual(expectedSumm4, sum4);
+
         }
 
 
@@ -287,6 +307,19 @@ namespace Exercises.Tests
             List<int> secondAddend8 = new List<int> { -2, -7 };
             List<int> expectedSumm8 = new List<int> { 8 };
 
+            // А после не хватило в тесте вот ТАКОГО РОДА параметров для выявления ошибки
+            // Хотя, как мне казалось, если посмотреть на указанные выше параметры теста
+            // были охвачены все основные сценарии и сложение с нулем, и сложениие с отрицательным числом
+            // и сложение чисел с разным количеством разрядов.
+            // Но вот и близко не возникло мысли обкать ситуацию, когда число содержит ноль в младшем разряде,
+            // то есть просто по случайности такого числа не оказалось в изначально заданных мной для теста параметрах
+            // Отсюда возникает ВОПРОС:
+            // есть ли какие-то правила, рекомендации, устоявшаяся практика обеспечения тестов ВСЕМИ НЕОБХОДИМЫМИ ПАРАМЕТРАМИ
+            // чтобы он качественно выполнил свою задачу - дал 100% гарантию, что метод работает корректно?
+            List<int> firstAddend9 = new List<int>  { 1, 5, 0 };
+            List<int> secondAddend9 = new List<int> {    2, 3 };
+            List<int> expectedSumm9 = new List<int> { 1, 7, 3 };
+
 
             List<int> sum = Exercise215.AddTwoNumbersDigits(firstAddend, secondAddend);
             List<int> sum1 = Exercise215.AddTwoNumbersDigits(firstAddend1, secondAddend1);
@@ -297,6 +330,7 @@ namespace Exercises.Tests
             List<int> sum6 = Exercise215.AddTwoNumbersDigits(firstAddend6, secondAddend6);
             List<int> sum7 = Exercise215.AddTwoNumbersDigits(firstAddend7, secondAddend7);
             List<int> sum8 = Exercise215.AddTwoNumbersDigits(firstAddend8, secondAddend8);
+            List<int> sum9 = Exercise215.AddTwoNumbersDigits(firstAddend9, secondAddend9);
 
 
             Assert.AreEqual(expectedSumm, sum);
@@ -308,6 +342,7 @@ namespace Exercises.Tests
             Assert.AreEqual(expectedSumm6, sum6);
             Assert.AreEqual(expectedSumm7, sum7);
             Assert.AreEqual(expectedSumm8, sum8);
+            Assert.AreEqual(expectedSumm9, sum9);
         }
 
 
@@ -338,6 +373,10 @@ namespace Exercises.Tests
             List<int> subtrahend5 = new List<int> { -2, -9 };
             List<int> expectedDiffernce5 = new List<int> { -4 };
 
+            List<int> minuend6 = new List<int> { 1, 5, 0 };
+            List<int> subtrahend6 = new List<int> { 2, 3 };
+            List<int> expectedDiffernce6 = new List<int> { 1, 2, 7 };
+
 
             List<int> difference = Exercise215.SubtractTwoNumbersDigits(minuend, subtrahend);
             List<int> difference1 = Exercise215.SubtractTwoNumbersDigits(minuend1, subtrahend1);
@@ -345,6 +384,7 @@ namespace Exercises.Tests
             List<int> difference3 = Exercise215.SubtractTwoNumbersDigits(minuend3, subtrahend3);
             List<int> difference4 = Exercise215.SubtractTwoNumbersDigits(minuend4, subtrahend4);
             List<int> difference5 = Exercise215.SubtractTwoNumbersDigits(minuend5, subtrahend5);
+            List<int> difference6 = Exercise215.SubtractTwoNumbersDigits(minuend6, subtrahend6);
 
 
             Assert.AreEqual(expectedDiffernce, difference);
@@ -353,6 +393,8 @@ namespace Exercises.Tests
             Assert.AreEqual(expectedDiffernce3, difference3);
             Assert.AreEqual(expectedDiffernce4, difference4);
             Assert.AreEqual(expectedDiffernce5, difference5);
+            Assert.AreEqual(expectedDiffernce6, difference6);
+
         }
 
     }
