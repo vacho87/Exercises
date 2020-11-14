@@ -172,14 +172,14 @@ namespace Exercises.Tests
             List<int> expectedRemainder7 = new List<int> { 1, 2, 3 };
 
 
-            List<int> remainder = Exercise215.UseSimpleSubtraction(minuend, subtrahend);
-            List<int> remainder1 = Exercise215.UseSimpleSubtraction(minuend1, subtrahend1);
-            List<int> remainder2 = Exercise215.UseSimpleSubtraction(minuend2, subtrahend2);
-            List<int> remainder3 = Exercise215.UseSimpleSubtraction(minuend3, subtrahend3);
-            List<int> remainder4 = Exercise215.UseSimpleSubtraction(minuend4, subtrahend4);
-            List<int> remainder5 = Exercise215.UseSimpleSubtraction(minuend5, subtrahend5);
-            List<int> remainder6 = Exercise215.UseSimpleSubtraction(minuend6, subtrahend6);
-            List<int> remainder7 = Exercise215.UseSimpleSubtraction(minuend7, subtrahend7);
+            List<int> remainder = Exercise215.SubtractTwoPositiveNumbersDigits(minuend, subtrahend);
+            List<int> remainder1 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend1, subtrahend1);
+            List<int> remainder2 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend2, subtrahend2);
+            List<int> remainder3 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend3, subtrahend3);
+            List<int> remainder4 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend4, subtrahend4);
+            List<int> remainder5 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend5, subtrahend5);
+            List<int> remainder6 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend6, subtrahend6);
+            List<int> remainder7 = Exercise215.SubtractTwoPositiveNumbersDigits(minuend7, subtrahend7);
 
 
             Assert.AreEqual(expectedRemainder, remainder);
@@ -218,11 +218,11 @@ namespace Exercises.Tests
 
 
 
-            List<int> sum = Exercise215.UseSimpleAddition(firstAddend, secondAddend);
-            List<int> sum1 = Exercise215.UseSimpleAddition(firstAddend1, secondAddend1);
-            List<int> sum2 = Exercise215.UseSimpleAddition(firstAddend2, secondAddend2);
-            List<int> sum3 = Exercise215.UseSimpleAddition(firstAddend3, secondAddend3);
-            List<int> sum4 = Exercise215.UseSimpleAddition(firstAddend4, secondAddend4);
+            List<int> sum = Exercise215.AddTwoPositiveNumbersDigits(firstAddend, secondAddend);
+            List<int> sum1 = Exercise215.AddTwoPositiveNumbersDigits(firstAddend1, secondAddend1);
+            List<int> sum2 = Exercise215.AddTwoPositiveNumbersDigits(firstAddend2, secondAddend2);
+            List<int> sum3 = Exercise215.AddTwoPositiveNumbersDigits(firstAddend3, secondAddend3);
+            List<int> sum4 = Exercise215.AddTwoPositiveNumbersDigits(firstAddend4, secondAddend4);
 
 
             Assert.AreEqual(expectedSumm, sum);

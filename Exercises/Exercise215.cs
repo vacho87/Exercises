@@ -19,8 +19,8 @@ namespace Exercises
                  "will add, subtract and multiply them in digit-by-digit mode");
 
             Console.WriteLine("Enter the first number");
-            int firstNumber = Exercise214.AskForNumber();
-            int secondNumber = Exercise214.AskForNumber();
+            int firstNumber = ServiceClass.InputAnyIntegerNumber();
+            int secondNumber = ServiceClass.InputAnyIntegerNumber();
             List<int> decomposedFirstNumber = Exercise214.DecomposeNumber(firstNumber);
             List<int> decomposedSecondNumber = Exercise214.DecomposeNumber(secondNumber);
 
@@ -56,24 +56,24 @@ namespace Exercises
 
             if (IsNumberInListPositive(addend1Digits) && IsNumberInListPositive(addend2Digits))
             {
-                sumDigits = UseSimpleAddition(addend1Digits, addend2Digits);
+                sumDigits = AddTwoPositiveNumbersDigits(addend1Digits, addend2Digits);
             }
 
             else if (IsNumberInListPositive(addend1Digits))
             {
                 addend2Digits = GetListWithChangedSign(addend2Digits);
-                sumDigits = UseSimpleSubtraction(addend1Digits, addend2Digits);
+                sumDigits = SubtractTwoPositiveNumbersDigits(addend1Digits, addend2Digits);
             }
             else if (IsNumberInListPositive(addend2Digits))
             {
                 addend1Digits = GetListWithChangedSign(addend1Digits);
-                sumDigits = UseSimpleSubtraction(addend2Digits, addend1Digits);
+                sumDigits = SubtractTwoPositiveNumbersDigits(addend2Digits, addend1Digits);
             }
             else
             {
                 addend1Digits = GetListWithChangedSign(addend1Digits);
                 addend2Digits = GetListWithChangedSign(addend2Digits);
-                sumDigits = UseSimpleAddition(addend1Digits, addend2Digits);
+                sumDigits = AddTwoPositiveNumbersDigits(addend1Digits, addend2Digits);
                 sumDigits = GetListWithChangedSign(sumDigits);
             }
 
@@ -110,7 +110,7 @@ namespace Exercises
                     intermediateResultDigits.Add(0);
                 }
 
-                productDigits = UseSimpleAddition(productDigits, intermediateResultDigits);
+                productDigits = AddTwoPositiveNumbersDigits(productDigits, intermediateResultDigits);
 
             }
 
@@ -126,18 +126,18 @@ namespace Exercises
 
             if (IsNumberInListPositive(minuendDigits) && IsNumberInListPositive(subtrahendDigits))
             {
-                remainderList = UseSimpleSubtraction(minuendDigits, subtrahendDigits);
+                remainderList = SubtractTwoPositiveNumbersDigits(minuendDigits, subtrahendDigits);
             }
             else if (IsNumberInListPositive(minuendDigits))  // subtracting negative from positive as addition of two positives ('x' - '-y' = 'x' + 'y')
             {
-                remainderList = UseSimpleAddition(minuendDigits, GetListWithChangedSign(subtrahendDigits));
+                remainderList = AddTwoPositiveNumbersDigits(minuendDigits, GetListWithChangedSign(subtrahendDigits));
             }
             else if (IsNumberInListPositive(subtrahendDigits))
             {
                 // subtracting positive from negative as the sum of two positives with changed sign
                 // '-x' - 'y' = -1 * ('x' + 'y')
                 minuendDigits = GetListWithChangedSign(minuendDigits);
-                remainderList = UseSimpleAddition(minuendDigits, subtrahendDigits);
+                remainderList = AddTwoPositiveNumbersDigits(minuendDigits, subtrahendDigits);
                 remainderList = GetListWithChangedSign(remainderList);
             }
             else
@@ -146,7 +146,7 @@ namespace Exercises
                 // '-x' - '-y' = 'y' - 'x'
                 minuendDigits = GetListWithChangedSign(minuendDigits);
                 subtrahendDigits = GetListWithChangedSign(subtrahendDigits);
-                remainderList = UseSimpleSubtraction(subtrahendDigits, minuendDigits);
+                remainderList = SubtractTwoPositiveNumbersDigits(subtrahendDigits, minuendDigits);
             }
 
             return remainderList;
@@ -156,26 +156,26 @@ namespace Exercises
         /// <summary>
         /// Use only(!) for addition of two not negative numbers in list-representation
         /// </summary>
-        /// <param name="addend1Digits"></param>
-        /// <param name="addend2Digits"></param>
+        /// <param name="positiveAddend1Digits"></param>
+        /// <param name="positiveAddend2Digits"></param>
         /// <returns>List of integers that contains sum of addend1Digits and addend2Digits</returns>
-        public static List<int> UseSimpleAddition(List<int> addend1Digits, List<int> addend2Digits)
+        public static List<int> AddTwoPositiveNumbersDigits(List<int> positiveAddend1Digits, List<int> positiveAddend2Digits)
         {
-            addend1Digits = new List<int>(addend1Digits); // For saving argument back to it's initial state
-            addend2Digits = new List<int>(addend2Digits); // For saving argument back to it's initial state
-            EqualizeNUmberOfDigitsInTwoDigitsLists(addend1Digits, addend2Digits);
-            addend1Digits.Reverse();
-            addend2Digits.Reverse();
+            positiveAddend1Digits = new List<int>(positiveAddend1Digits); // For saving argument back to it's initial state
+            positiveAddend2Digits = new List<int>(positiveAddend2Digits); // For saving argument back to it's initial state
+            EqualizeNUmberOfDigitsInTwoDigitsLists(positiveAddend1Digits, positiveAddend2Digits);
+            positiveAddend1Digits.Reverse();
+            positiveAddend2Digits.Reverse();
 
             List<int> sumDigits = new List<int>();
             int nextDigitIncrement = 0;
             int currentDigitInResultList;
 
 
-            for (int i = 0; i < addend1Digits.Count; i++)
+            for (int i = 0; i < positiveAddend1Digits.Count; i++)
             {
-                currentDigitInResultList = (addend1Digits[i] + addend2Digits[i] + nextDigitIncrement) % 10;
-                nextDigitIncrement = (addend1Digits[i] + addend2Digits[i] + nextDigitIncrement) / 10;
+                currentDigitInResultList = (positiveAddend1Digits[i] + positiveAddend2Digits[i] + nextDigitIncrement) % 10;
+                nextDigitIncrement = (positiveAddend1Digits[i] + positiveAddend2Digits[i] + nextDigitIncrement) / 10;
                 sumDigits.Add(currentDigitInResultList);
             }
 
@@ -193,45 +193,45 @@ namespace Exercises
         /// Сomputes the difference between two numbers in thier list-representation
         /// (!)in case of both numbers are positive 
         /// </summary>
-        /// <param name="minuendDigits"></param>
-        /// <param name="subtrahendDigits"></param>
-        public static List<int> UseSimpleSubtraction(List<int> minuendDigits, List<int> subtrahendDigits)
+        /// <param name="positiveMinuendDigits"></param>
+        /// <param name="positiveSubtrahendDigits"></param>
+        public static List<int> SubtractTwoPositiveNumbersDigits(List<int> positiveMinuendDigits, List<int> positiveSubtrahendDigits)
         {
-            minuendDigits = new List<int>(minuendDigits); // To save the argument in it's initial state
-            subtrahendDigits = new List<int>(subtrahendDigits); // To save the argument in it's initial state 
+            positiveMinuendDigits = new List<int>(positiveMinuendDigits); // To save the argument in it's initial state
+            positiveSubtrahendDigits = new List<int>(positiveSubtrahendDigits); // To save the argument in it's initial state 
             bool minuendDigitsWasSmaller = false;
 
             // Subtracting larger number from smaller by REVERSING and then changing sign of the remainder
-            if (minuendDigits.IsSmallerThan(subtrahendDigits))
+            if (positiveMinuendDigits.IsSmallerThan(positiveSubtrahendDigits))
             {
-                var transferVariable = minuendDigits;
-                minuendDigits = subtrahendDigits;
-                subtrahendDigits = transferVariable;
+                var transferVariable = positiveMinuendDigits;
+                positiveMinuendDigits = positiveSubtrahendDigits;
+                positiveSubtrahendDigits = transferVariable;
                 minuendDigitsWasSmaller = true;
             }
 
-            minuendDigits.Reverse();
-            subtrahendDigits.Reverse();
+            positiveMinuendDigits.Reverse();
+            positiveSubtrahendDigits.Reverse();
             List<int> remainderDigits = new List<int>();
             int currentDigitInRemainderList;
 
-            for (int i = 0; i < subtrahendDigits.Count; i++)
+            for (int i = 0; i < positiveSubtrahendDigits.Count; i++)
             {
-                if (minuendDigits[i] < subtrahendDigits[i])
+                if (positiveMinuendDigits[i] < positiveSubtrahendDigits[i])
                 {
-                    currentDigitInRemainderList = (minuendDigits[i] + 10 - subtrahendDigits[i]);
-                    minuendDigits[i + 1] -= 1;
+                    currentDigitInRemainderList = (positiveMinuendDigits[i] + 10 - positiveSubtrahendDigits[i]);
+                    positiveMinuendDigits[i + 1] -= 1;
                 }
                 else
                 {
-                    currentDigitInRemainderList = (minuendDigits[i] - subtrahendDigits[i]);
+                    currentDigitInRemainderList = (positiveMinuendDigits[i] - positiveSubtrahendDigits[i]);
                 }
                 remainderDigits.Add(currentDigitInRemainderList);
             }
 
             // add to the list, that contains the difference, higher digits of minuend number
             // that were not subtracted because of the subtrahend had fewer digits                     
-            remainderDigits.AddRange(minuendDigits.GetRange(subtrahendDigits.Count, minuendDigits.Count - subtrahendDigits.Count));
+            remainderDigits.AddRange(positiveMinuendDigits.GetRange(positiveSubtrahendDigits.Count, positiveMinuendDigits.Count - positiveSubtrahendDigits.Count));
 
             if (minuendDigitsWasSmaller)  // Subtracting larger number from smaller by reversing and then CHANGING SIGN of the remainder
             {
@@ -244,25 +244,8 @@ namespace Exercises
 
 
         public static bool IsNumberInListPositive(List<int> list)
-        {
-            // !!!!! if (list[list.Count - 1] > 0)
-            // вот зесь крылся корень всех зол
-            // дело в том, что в методах самих арифметических операций шла работа с реверснутыми списками
-            // и в этом методе я по привычке сделал  проверку последнего элемента, ошибочно полагая,
-            // что это старший разряд числа, хотя на самом деле это младший разряд. 
-            // Естественно, что младший  разряд в числе (в отличие от старшего) может быть равным нулю,
-            // что и вело к интерпертации этим методом числа, скажем 150, как отрицательного, со всеми вытекающими
-            // по цепочке неверными последующими шагами в алгоритме
-            if (list[0] > 0)
-            {
-                return true;
-            }
-
-            else
-            {
-                return false;
-            }
-
+        {            
+            return  list[0] > 0;            
         }
 
 
@@ -284,7 +267,8 @@ namespace Exercises
             {
                 return true;
             }
-            else if (IsNumberInListPositive(list1) && !IsNumberInListPositive(list2))
+            
+            if (IsNumberInListPositive(list1) && !IsNumberInListPositive(list2))
             {
                 return true;
             }
@@ -298,14 +282,12 @@ namespace Exercises
 
         public static void EqualizeNUmberOfDigitsInTwoDigitsLists(List<int> list1, List<int> list2)
         {
-            list1.Reverse();
-            list2.Reverse();
             int difference = list1.Count - list2.Count;
             if (difference < 0)
             {
                 for (int i = difference; i < 0; i++)
                 {
-                    list1.Add(0);
+                    list1.Insert(0, 0);
                 }
 
             }
@@ -314,13 +296,11 @@ namespace Exercises
             {
                 for (int i = difference; i > 0; i--)
                 {
-                    list2.Add(0);
+                    list2.Insert(0, 0);
                 }
 
             }
-
-            list1.Reverse();
-            list2.Reverse();
+                        
         }
 
 

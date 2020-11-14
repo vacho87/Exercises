@@ -15,7 +15,7 @@ namespace Exercises.Tests
         [TestCase("p", TestName = "p is correct number of Exrcise", ExpectedResult = false)]
         public bool InputIsCorrectExerciseNumberTest(string input)
         {
-          return ExerciseChooser.InputIsCorrectExerciseNumber(input); 
+          return ServiceClass.InputIsCorrectExerciseNumber(input); 
         }
 
 

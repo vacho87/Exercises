@@ -76,10 +76,9 @@
     <Compile Include="Exercise7.cs" />
     <Compile Include="Exercise8.cs" />
     <Compile Include="Exercise9.cs" />
-    <Compile Include="ExerciseChooser.cs" />
+    <Compile Include="ServiceClass.cs" />
     <Compile Include="ExerciseRunner.cs" />
     <Compile Include="ListExtension.cs" />
-    <Compile Include="NumberInput.cs" />
     <Compile Include="Performance\Step.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

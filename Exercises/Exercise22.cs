@@ -65,22 +65,32 @@ namespace Exercises
         public static void ShowList (List <int> list, string listName = "")
         {
             Console.Write ($"list {listName} contains: ");
-            foreach (int number in list) Console.Write($" {number},");
-            Console.WriteLine();
+            foreach (int number in list)
+            {
+                Console.Write($" {number},");
+                Console.WriteLine();
+            }
+            
         }
 
         public static void ShowList (List<char> list, string listName = "")
         {
             Console.Write($"list {listName} contains: ");
-            foreach (char symbol in list) Console.Write($" {symbol},");
-            Console.WriteLine();
+            foreach (char symbol in list)
+            {
+                Console.Write($" {symbol},");
+                Console.WriteLine();
+            }
         }
 
         public static void ShowList (List<object> list, string listName = "")
         {
             Console.Write($"list {listName} contains: ");
-            foreach (object obj in list) Console.Write($" {obj},");
-            Console.WriteLine();
+            foreach (object obj in list)
+            {
+                Console.Write($" {obj},");
+                Console.WriteLine();
+            }
         }
 
 

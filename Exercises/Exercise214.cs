@@ -16,7 +16,7 @@ namespace Exercises
     {
         public override void ExerciseRun()
         {
-            List<int> list = DecomposeNumber(AskForNumber());
+            List<int> list = DecomposeNumber(ServiceClass.InputAnyIntegerNumber());
             Console.WriteLine("The number was decomposed to digits, which were put in list");
             list.ShowList();
         }
@@ -46,21 +46,6 @@ namespace Exercises
         * - третий, помимо проверки на число, проверяет еще и наличие введенного числа в списке;
         * - текущий метод требует только чтобы число было целочисленным.        
         * Посему решил оставить этот метод здесь.*/
-        public static int AskForNumber()
-        {
-            Console.WriteLine("\nEnter some integer number to decompose it to digits");
-            bool inputedDataIsNumber = int.TryParse(Console.ReadLine(), out int number);
-            while (!inputedDataIsNumber)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error! Data that you've inputed is not an integer number. Try again\n" +
-                        "Enter some integetr number");
-                Console.ResetColor();
-                inputedDataIsNumber = int.TryParse(Console.ReadLine(), out number);
-            }
-
-            return number;
-
-        }
+        
     }
 }

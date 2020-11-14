@@ -17,7 +17,7 @@ namespace Exercises
         public override void ExerciseRun()
         {
             ulong sum = 0;
-            uint number = NumberInput.Input();
+            uint number = ServiceClass.InputPositiveIntegerNumber();
 
             ulong RestrictedFactorial (uint num)
             {

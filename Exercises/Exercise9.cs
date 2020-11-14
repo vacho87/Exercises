@@ -30,7 +30,7 @@ namespace Exercises
             for(int i=0;i<18;i++)
             {
                 Console.Write("* ");
-                int delay = 500 - (i * 30)+20;
+                int delay = 500 - (i * 30) + 20;
                 if (delay < 0) delay = 0;
                 System.Threading.Thread.Sleep(delay);
             }
@@ -38,7 +38,7 @@ namespace Exercises
                 "Input your guess and press \"Enter\"");
             var rnd = new Random();
             int thoughtNumber = rnd.Next(1, 100);
-            int guessNumber = (int) NumberInput.Input();
+            int guessNumber = (int) ServiceClass.InputPositiveIntegerNumber();
             int previousGuessNumber;
             int tryCounter = 1;
             while (guessNumber!=thoughtNumber)
@@ -46,7 +46,7 @@ namespace Exercises
                 previousGuessNumber = guessNumber;
                 if (guessNumber < thoughtNumber) Console.WriteLine("Your number is TOO SMALL");
                 else Console.WriteLine("Your number is TOO LARGE");
-                guessNumber = (int) NumberInput.Input();
+                guessNumber = (int) ServiceClass.InputPositiveIntegerNumber();
                 if (previousGuessNumber != guessNumber) tryCounter++;
             }
             Console.WriteLine("!!!CONGRATULATIONS, YOU WON!!!\n" +

@@ -16,7 +16,7 @@ namespace Exercises
         public override void ExerciseRun()
         {
             ulong sum = 0;
-            uint number = NumberInput.Input();
+            uint number = ServiceClass.InputPositiveIntegerNumber();
 
             for (uint i = number; i > 0; i--)
             {

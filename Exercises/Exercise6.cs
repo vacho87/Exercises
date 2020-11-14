@@ -20,10 +20,10 @@ namespace Exercises
             switch (choiсe)
             {
                 case "s":
-                    Console.WriteLine($"The sum of the numbers from 1 to {number = NumberInput.Input()} = {Sum(number)}");
+                    Console.WriteLine($"The sum of the numbers from 1 to {number = ServiceClass.InputPositiveIntegerNumber()} = {Sum(number)}");
                     break;
                 case "p":
-                   Console.WriteLine($"The product of the numbers from 1 to {number = NumberInput.Input()} = {Product(number)}");
+                   Console.WriteLine($"The product of the numbers from 1 to {number = ServiceClass.InputPositiveIntegerNumber()} = {Product(number)}");
                     break;
                 case "e":
                     break;
