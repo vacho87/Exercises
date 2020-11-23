@@ -10,13 +10,15 @@ namespace Exercises
     {
         public override void ExerciseRun()
         {
+            List<int> base10List = new List<int>(Exercise214.DecomposeNumber(7));
+            List<int> base2List = new List<int>(ChangeNumberBaseFrom10ToAnyOther(base10List, 2));
 
+            base10List.ShowList("base10List");
+            base2List.ShowList("base2List");
 
-
-
-            throw new NotImplementedException();
         }
 
+        
 
     }
 }

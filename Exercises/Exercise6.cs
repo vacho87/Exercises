@@ -16,7 +16,7 @@ namespace Exercises
         public override void ExerciseRun()
         {
             var choiсe = AskSumOrProduct.Ask();
-            uint number;
+            int number;
             switch (choiсe)
             {
                 case "s":
@@ -37,9 +37,9 @@ namespace Exercises
 
 
         }
-        public ulong Sum (uint number)
+        public long Sum (int number)
         {
-            ulong sum=0;
+            long sum=0;
             for ( ;number>0;number--)
             {
                 sum += number;
@@ -47,9 +47,9 @@ namespace Exercises
            
             return sum ;
         }
-        public ulong Product (uint number)
+        public long Product (int number)
         {
-            ulong product = 1;
+            long product = 1;
             for ( ;number>0;number--)
             {
                 product *= number;

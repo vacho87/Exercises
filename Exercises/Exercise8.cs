@@ -10,16 +10,16 @@ namespace Exercises
     {
         public override void ExerciseRun()
         {
-            for (ulong i=1; i< 18446744073709551615; i++ )
+            for (long i=1; i< 184467440737091615; i++ )
             {
                 if (IsPrime(i)) Console.WriteLine(i);
             }
 
-            bool IsPrime (ulong u)
+            bool IsPrime (long u)
             {
 
                 bool isprime = true;
-                for (ulong i=2;i<u; i++)
+                for (long i=2;i<u; i++)
                 {
                     if (u % i == 0)
                     {
