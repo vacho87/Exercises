@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 
 namespace Exercises
-{
+{ 
+    /// <summary>
     /// <task_description>
     /// 15.	Write functions that add, subtract, and multiply two numbers
     /// in their digit-list representation (and return a new digit list).
@@ -11,7 +12,8 @@ namespace Exercises
     /// If you couldn’t completely solve the prime number exercise above due 
     /// to the lack of large numbers in your language, you can now use your own library for this task.
     /// </task_description>
-    public class Exercise215 : Exercise
+    /// </summary>
+public class Exercise215 : Exercise
     {
         public override void ExerciseRun()
         {

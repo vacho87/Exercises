@@ -20,17 +20,15 @@ namespace Exercises
         }
 
 
-        public static int InputPositiveIntegerNumber()
-        {
-            string inviteMessage = "\nEnter some arbitary integer positive number and press \"Enter\"";
+        public static int InputPositiveIntegerNumber(string inviteMessage = "\nEnter some arbitary integer positive number and press \"Enter\"")
+        {            
             string errorMessage = "\nError! Entered data is incorrect. Try again";
             return AskUserInputWithValidation(InputIsPositiveNumber, inviteMessage, errorMessage);
 
         }
 
-        public static int InputAnyIntegerNumber()
+        public static int InputAnyIntegerNumber(string inviteMessage = "\nEnter some integer number")
         {
-            string inviteMessage = "\nEnter some integer number";
             string errorMessage = "\nError! Data that you've inputed is not an integer number. Try again";
             return AskUserInputWithValidation(MockUpValidation, inviteMessage, errorMessage);
 
