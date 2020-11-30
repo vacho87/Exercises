@@ -24,16 +24,22 @@ namespace Exercises
         {            
             string errorMessage = "\nError! Entered data is incorrect. Try again";
             return AskUserInputWithValidation(InputIsPositiveNumber, inviteMessage, errorMessage);
-
         }
 
         public static int InputAnyIntegerNumber(string inviteMessage = "\nEnter some integer number")
         {
             string errorMessage = "\nError! Data that you've inputed is not an integer number. Try again";
             return AskUserInputWithValidation(MockUpValidation, inviteMessage, errorMessage);
-
         }
-        
+
+        public static int InputNumberBaseNumber()
+        {
+            string inviteMessage = "\nTo set number base enter some integer number from 2 to 10";
+            string errorMessage = "\nError! Input is out of range of valid values. Try again";
+            return AskUserInputWithValidation(InputIsCorrectNumberBase, inviteMessage, errorMessage);
+        }
+
+
 
         private static int AskUserInputWithValidation(Func<int, bool> validate, string inviteMessage, string errorMessage)
         {
@@ -79,6 +85,15 @@ namespace Exercises
         {
             return true;
         }
+
+        public static bool InputIsCorrectNumberBase(int inputNumber)
+        {
+            return inputNumber > 1 && inputNumber < 11;
+        }
+
+
+
+
 
     }
 }

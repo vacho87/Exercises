@@ -25,12 +25,15 @@ namespace Exercises
             int number = ServiceClass.InputAnyIntegerNumber("Enter any integer number to decompose it to digits in base 10");
             DigitList list = new DigitList(number);
 
-            byte base1 = (byte)ServiceClass.InputPositiveIntegerNumber("Enter any integer number up to 10 for the first conversion");
+            Console.Write("\nSET first number base to convert number >>>");
+            byte base1 = (byte)ServiceClass.InputNumberBaseNumber();
+            list.ChangeBase(base1);
+            list.ShowListOfDigits();
 
-
+            Console.Write("\nSET first number base to convert number >>>");
+            byte base2 = (byte)ServiceClass.InputNumberBaseNumber();
+            list.ChangeBase(base2);
+            list.ShowListOfDigits();
         }
-
-        
-
     }
 }

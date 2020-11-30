@@ -10,7 +10,8 @@ namespace Exercises
     {
         public void Run()
         {
-            string choice = $"Exercises.Exercise{ServiceClass.InputExerciseNumber()}";
+            int chosenNumber = ServiceClass.InputExerciseNumber();
+            string choice = $"Exercises.Exercise{chosenNumber}";
             System.Runtime.Remoting.ObjectHandle oh;
             try
             {
@@ -21,8 +22,8 @@ namespace Exercises
             catch
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"\nProbably exercise with number {ServiceClass.InputExerciseNumber()} has not yet been completed." +
-                    $"\nLet's try again. Please, enter another number more than 3, but less than  {ServiceClass.InputExerciseNumber()}");
+                Console.WriteLine($"\nProbably exercise with number {chosenNumber} has not yet been completed." +
+                    $"\nLet's try again. Please, enter another number more than 3, but less than  {chosenNumber}");
                 Console.ResetColor();
                 Run();
             }

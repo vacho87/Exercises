@@ -14,13 +14,13 @@ namespace Exercises
 
         public DigitList(int initialNumber)
         {
-            listOfDigits = new List<int>(Exercise214.DecomposeNumber(initialNumber));
+            listOfDigits = new List<int>(Decompose10BasedNumberToListWithAnyBase(initialNumber, 10));
             numberBase = 10;
         }
 
         public DigitList(int initialNumber, byte numberBase)
         {
-            listOfDigits = new List<int>(Exercise214.DecomposeNumber(initialNumber));
+            listOfDigits = new List<int>(Decompose10BasedNumberToListWithAnyBase(initialNumber, numberBase));
             this.numberBase = numberBase; 
                 
         }
@@ -29,16 +29,8 @@ namespace Exercises
         {
             if (baseToSet != numberBase)
             {
-                // здесь не применил тренарный оператор лишь потому, что выражение получалось слишком длинным в одну строку
-                // да и читается, мне кажется, в данном случае лучше в таком виде
-                if (baseToSet == 10)
-                {
-                    listOfDigits = ChangeNumberListBaseFromAnyTo10(listOfDigits, numberBase);
-                }
-                else
-                {
-                    ChangeNumberListBaseFrom10ToAnyOther(listOfDigits, baseToSet);
-                }
+                int number = ComposeNumberListWithAnyBaseTo10BasedNumber(listOfDigits, numberBase);
+                listOfDigits = Decompose10BasedNumberToListWithAnyBase(number, baseToSet);
                 numberBase = baseToSet;
             }
             else
@@ -58,39 +50,38 @@ namespace Exercises
         }
 
 
-        public List<int> ChangeNumberListBaseFrom10ToAnyOther(List<int> numberWith10BaseList, byte baseToSet)
-        {
-            int composedNumberWith10Base = ComposeNumberListWithAnyBaseTo10BasedNumber(numberWith10BaseList, 10);
-
+        public static List<int> Decompose10BasedNumberToListWithAnyBase(int number, byte baseToSet)
+        {           
             List<int> resultList = new List<int>();
-            int quotient = composedNumberWith10Base;
-            while (quotient != 0)
+            while (number != 0)
             {
-                resultList.Add(quotient % baseToSet);
-                quotient /= baseToSet;
+                resultList.Add(number % baseToSet);
+                number /= baseToSet;
             }
 
             resultList.Reverse();
             return resultList;
         }
 
-
-        public List<int> ChangeNumberListBaseFromAnyTo10 (List<int> numberListWithAnyBase, byte numberListBase)
+       
+        public static int ComposeNumberListWithAnyBaseTo10BasedNumber(List<int> numberList, byte numberListBase)
         {
-            int composedNumberWith10Base = ComposeNumberListWithAnyBaseTo10BasedNumber(numberListWithAnyBase, numberListBase);
-            return Exercise214.DecomposeNumber(composedNumberWith10Base);
-        }
-
-
-        public int ComposeNumberListWithAnyBaseTo10BasedNumber(List<int> numberList, byte numberListBase)
-        {
+            numberList = new List<int>(numberList);
+            numberList.Reverse();
             int resultNUmber = 0;
-            for (int i = numberList.Count - 1; i >= 0; i--)
+            for (int i = 0; i < numberList.Count; i++)
             {
                 resultNUmber += numberList[i] * (int)Math.Pow(numberListBase, i);
             }
+
             return resultNUmber;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != this.GetType()) return false;
+            DigitList digitList = (DigitList)obj; 
+            return (this.listOfDigits.IsEqual(digitList.listOfDigits) && this.numberBase == digitList.numberBase);
+        }
     }
 }
