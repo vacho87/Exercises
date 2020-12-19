@@ -89,11 +89,7 @@ namespace Exercises
         public static bool InputIsCorrectNumberBase(int inputNumber)
         {
             return inputNumber > 1 && inputNumber < 11;
-        }
-
-
-
-
-
+        }        
+                
     }
 }

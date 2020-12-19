@@ -14,7 +14,7 @@ namespace Exercises
     /// </task_description>
     /// </summary>
 
-    class Exercise217 : Exercise
+    public class Exercise217 : Exercise
     {
         public override void ExerciseRun()
         {
@@ -24,23 +24,26 @@ namespace Exercises
             list.ShowList();
 
             List<int> sortedBySelectionList = SortBySelection(list);
-            Console.WriteLine("After sortig with Selection sort");
+            Console.Write("\nAfter sortig with Selection sort");
             sortedBySelectionList.ShowList();
 
             List<int> sortedByInsertionList = SortByInsertion(list);
-            Console.WriteLine("After sortig with Insertion sort");
+            Console.Write("\nAfter sortig with Insertion sort");
             sortedByInsertionList.ShowList();
 
             List<int> sortedByMergeList = SortByMerge(list);
-            Console.WriteLine("After sortig with Merge sort");
+            Console.Write("\nAfter sortig with Merge sort    ");
             sortedByMergeList.ShowList();
 
             List<int> sortedByStoogeList = new List<int>(list);
             StoogeSort(sortedByStoogeList);
-            Console.WriteLine("After sortig with Stooge sort");
+            Console.Write("\nAfter sortig with Stooge sort   ");
             sortedByStoogeList.ShowList();
 
-
+            List<int> sortedByQSortList = new List<int>(list);
+            SortByQSort(sortedByQSortList);
+            Console.Write("\nAfter sortig with Quick sort    ");
+            sortedByQSortList.ShowList();
         }
 
         public static List<int> SortBySelection(List<int> list)
@@ -145,20 +148,12 @@ namespace Exercises
 
 
 
-        // Пришлось вложить метод в метод так как не знал, как еще сообщить методу
-        // границы сортируемого диапазона при первом его вызове.
-        // Пробовал использовать параметры по умолчанию, но, если определить параметр
-        // lowerBound как "int lowerBound = 0" возможно, то определить параметр
-        // upperBound как "int upperBound = list.Count - 1" нельзя.
-        //
-        // !!! Обязательно проверить сортироку массива 4746252 !!!
-        // !!! А ТАК ЖЕ 4749252 !!!
         public static void StoogeSort(List<int> list)
         {
             StoogeAlgorithm(list, 0, list.Count - 1);
         }
 
-        public static void StoogeAlgorithm(List<int> list, int lowerBound, int upperBound)
+        private static void StoogeAlgorithm(List<int> list, int lowerBound, int upperBound)
         {
             if (list[lowerBound] > list[upperBound])
             {
@@ -171,9 +166,9 @@ namespace Exercises
             if (currentRangeSize > 2)
             {
                 int firstTwoThirdLowerBound = lowerBound;
-                int firstTwoThirdUpperBound = (lowerBound + (currentRangeSize - 1) * 2 / 3);
+                int firstTwoThirdUpperBound = (upperBound - (currentRangeSize) / 3);
 
-                int secondTwoThirdLowerBound = (upperBound - (currentRangeSize - 1) * 2 / 3);
+                int secondTwoThirdLowerBound = (lowerBound + (currentRangeSize) / 3);
                 int secondTwoThirdUpperBound = upperBound;
 
                 StoogeAlgorithm(list, firstTwoThirdLowerBound, firstTwoThirdUpperBound);
@@ -184,11 +179,113 @@ namespace Exercises
             else
             {
                 return;
-
             }
 
         }
 
+
+        public static void SortByQSort (List<int> list)
+        {
+            QSort(list, 0, list.Count - 1);
+        }
+
+
+        private static void QSort(List<int> list, int lowerBound, int upperBound)
+        {           
+            if (lowerBound >= upperBound)
+            {
+                return;
+            }
+
+            int supportItemIndex = DetectSupportItemPosition(list, lowerBound, upperBound);
+            int supportItemValue = list[supportItemIndex];
+            int initialSupportItemIndex = supportItemIndex;
+
+            // move list items from left subList to right            
+            {
+                for (int i = supportItemIndex - 1; i >= lowerBound; i--)
+                {
+                    if (list[i] > supportItemValue)
+                    {
+                        list.Insert(supportItemIndex+1, list[i]);
+                        list.RemoveAt(i);
+                        supportItemIndex--;                       
+                    }
+
+                }
+               
+            }
+
+            int supportItemIndexMovesCount = supportItemIndex - initialSupportItemIndex;
+
+            // move list items from right subList to left 
+            for (int i = upperBound; i > supportItemIndex - supportItemIndexMovesCount; i--)
+            {
+                if (supportItemIndex >= upperBound)
+                {
+                    return;
+                }
+                if (list[i] <= supportItemValue)
+                {
+                    list.Insert(supportItemIndex, list[i]);
+                    list.RemoveAt(i + 1);
+                    supportItemIndex++;
+                    i++;                    
+                }
+            }
+           
+            int leftLength = supportItemIndex - lowerBound;
+            int rightLength = upperBound - supportItemIndex;
+
+            // С целью предотвращения переполненния стека при сортировке большого массива значений
+            // и неравномерном количественном распределении элементов справа и слева от опорного элемента
+            // рекурсивный вызов в первую очередь отрабатывает меньший из двух подмассивов 
+            if (leftLength < rightLength)
+            {                
+                QSort(list, lowerBound, supportItemIndex - 1);
+                QSort(list, supportItemIndex + 1, upperBound);
+            }
+            else
+            {
+                QSort(list, supportItemIndex + 1, upperBound);
+                QSort(list, lowerBound, supportItemIndex - 1);
+            }
+           
+        }
+
+
+        public static int DetectSupportItemPosition(List<int> list, int firstItemIndex, int lastItemIndex)
+        {
+            if ((lastItemIndex - firstItemIndex + 1) < 4)
+            {
+                return firstItemIndex;
+            }
+            else
+            {                                
+                int middleItemIndex = (lastItemIndex + firstItemIndex) / 2;
+                int averageValue = (list[firstItemIndex] + list[lastItemIndex] + list[middleItemIndex]) / 3;
+
+                int firstToAverageDifference = (int)Math.Abs(averageValue - list[firstItemIndex]);
+                int lastToAverageDifference = (int)Math.Abs(averageValue - list[lastItemIndex]);
+                int middleToAverageDifference = (int)Math.Abs(averageValue - list[middleItemIndex]);               
+
+                if (middleToAverageDifference <= firstToAverageDifference && middleToAverageDifference <= lastToAverageDifference)
+                {
+                    return middleItemIndex;
+                }
+                else if (firstToAverageDifference <= middleToAverageDifference && firstToAverageDifference <= lastToAverageDifference)
+                {
+                    return firstItemIndex;
+                }
+                else
+                {
+                    return lastItemIndex;
+                }
+
+            }
+
+        }
+        
     }
 
 }

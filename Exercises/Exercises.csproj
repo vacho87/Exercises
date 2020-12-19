@@ -63,7 +63,10 @@
     <Compile Include="Exercise215.cs" />
     <Compile Include="Exercise216.cs" />
     <Compile Include="Exercise217.cs" />
+    <Compile Include="Exercise218.cs" />
+    <Compile Include="Exercise219.cs" />
     <Compile Include="Exercise22.cs" />
+    <Compile Include="Exercise220.cs" />
     <Compile Include="Exercise23.cs" />
     <Compile Include="Exercise24.cs" />
     <Compile Include="Exercise25.cs" />
