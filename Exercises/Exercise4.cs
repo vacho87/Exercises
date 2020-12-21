@@ -15,10 +15,10 @@ namespace Exercises
     {
         public override void ExerciseRun()
         {
-            ulong sum = 0;
-            uint number = NumberInput.Input();
+            long sum = 0;
+            int number = ServiceClass.InputPositiveIntegerNumber();
 
-            for (uint i = number; i > 0; i--)
+            for (int i = number; i > 0; i--)
             {
                 sum += i;
             }
@@ -26,7 +26,7 @@ namespace Exercises
 
 
            
-            ulong Factorial(uint num)
+            long Factorial(int num)
             {                          // не могу понять почему не получается перехватить исключение на этой строке                
                 try
                 {

@@ -10,24 +10,29 @@ namespace Exercises
     {
         public void Run()
         {
-            string choice = $"Exercises.Exercise{ExerciseChooser.AskChoice()}";
+            int chosenNumber = ServiceClass.InputExerciseNumber();
+            string choice = $"Exercises.Exercise{chosenNumber}";
             System.Runtime.Remoting.ObjectHandle oh;
             try
             {
                 oh = Activator.CreateInstance("Exercises", choice);
                 var Ex = (Exercise)oh.Unwrap();
-                Ex.ExerciseRun();
+                 Ex.ExerciseRun();
             }
             catch
             {
-                Console.WriteLine($"Probably exercise with number {ExerciseChooser.number} has not yet been completed." +
-                    $"\nLet's try again. Please, enter another number more than 3, but less than  {ExerciseChooser.number}");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"\nProbably exercise with number {chosenNumber} has not yet been completed." +
+                    $"\nLet's try again. Please, enter another number more than 3, but less than  {chosenNumber}");
+                Console.ResetColor();
                 Run();
             }
-            Console.WriteLine("If you want to run one more exercise press SPACE-key\n" +
-                "For escape press any other key\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nFor escape  press key \"e\"\n" +
+                "If you want to run one more exercise press any other key");
+            Console.ResetColor();
 
-            if (Console.ReadKey(true).KeyChar == ' ') Run();
+            if (Console.ReadKey(true).KeyChar != 'e') Run();
 
         }
 

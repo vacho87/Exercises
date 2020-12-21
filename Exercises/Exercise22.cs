@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,13 +62,37 @@ namespace Exercises
             return list;
         }
         
-        public static void ShowList (List <int> list)
+        public static void ShowList (List <int> list, string listName = "")
         {
-            Console.Write ($"list contains: ");
-            foreach (int number in list) Console.Write($" {number},");
-            Console.WriteLine();
+            Console.Write ($"list {listName} contains: ");
+            foreach (int number in list)
+            {
+                Console.Write($" {number},");
+                Console.WriteLine();
+            }
+            
         }
-        
+
+        public static void ShowList (List<char> list, string listName = "")
+        {
+            Console.Write($"list {listName} contains: ");
+            foreach (char symbol in list)
+            {
+                Console.Write($" {symbol},");
+                Console.WriteLine();
+            }
+        }
+
+        public static void ShowList (List<object> list, string listName = "")
+        {
+            Console.Write($"list {listName} contains: ");
+            foreach (object obj in list)
+            {
+                Console.Write($" {obj},");
+                Console.WriteLine();
+            }
+        }
+
 
     }
 }

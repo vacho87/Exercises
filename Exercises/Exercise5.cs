@@ -16,10 +16,10 @@ namespace Exercises
         /// </task_description>
         public override void ExerciseRun()
         {
-            ulong sum = 0;
-            uint number = NumberInput.Input();
+            long sum = 0;
+            int number = ServiceClass.InputPositiveIntegerNumber();
 
-            ulong RestrictedFactorial (uint num)
+            long RestrictedFactorial (int num)
             {
                 if (num == 1) return 0;
                 if (num % 3 == 0 || num % 5 == 0)
@@ -29,7 +29,7 @@ namespace Exercises
                 return sum;
             }
 
-            for (uint i = number; i > 0; i--)
+            for (int i = number; i > 0; i--)
             {
                 if (i % 3 == 0 || i % 5 == 0)
                     sum += i;
