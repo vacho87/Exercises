@@ -23,7 +23,7 @@ namespace Exercises
     {
         public override void ExerciseRun()
         {
-            Console.WriteLine("A enter a sentece and it will be printed in frame word by word");
+            Console.WriteLine("Enter a sentece and it will be printed in frame word by word");
             Console.WriteLine("Enter any string, where words are divided each other by spaces and press \"Enter\"");
             string input = Console.ReadLine();
             List<string> list = new List<string>(input.Split(' '));

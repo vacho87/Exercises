@@ -35,11 +35,12 @@ namespace Exercises
 
             }
 
-            
+
             var ob = new ExerciseRunner();
             ob.Run();
 
-            //Console.ReadKey();
+
+            Console.ReadKey();
 
         }
     }
