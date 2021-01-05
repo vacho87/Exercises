@@ -17,7 +17,7 @@ namespace LINQ.Exercises
     // Почему-то методы этого класса не отображаются в ТестЭксплорере
     // но в случае копирования в другой класс, например в SetOperations все исправно работает
     [TestClass]
-    class CombinedOperations
+    public class CombinedOperations
     {
         // we have a list of people
         // we have their first names
@@ -29,16 +29,12 @@ namespace LINQ.Exercises
         [TestMethod]
         public void GetCharactersCommonToEveryonesFirstNamesUsingSetElements_ReturnCharEnumerable()
         {
-            // считаю, что задача мной решена, а тест не проходит из-за того, что ожидаемый результат запроса в блоке Assert
-            // "new char[] { 'a', 'i', 'J' }" указан неверно, точнее он не соответствует словесной постановке задачи:
-            // для всех четырех FirstName в источнике данных общей является лишь буква 'J'
-            IEnumerable<IEnumerable<char>> names = TestData.People.Select(person => person.FirstName.ToCharArray());
-            IEnumerable<char> commonCharacters = names.Aggregate((name, nextName) => name.Intersect(nextName)); // please edit/complete so that the test passes
+            IEnumerable<char> commonCharacters = TestData.People
+                                                         .Select(person => person.FirstName.AsEnumerable())
+                                                         .Aggregate((name, nextName) => name.Intersect(nextName))
+                                                         .ToList();
 
-            // Вариант в одно выражение, но он как-то слишком сложно читается
-            // IEnumerable<char> commonCharacters = TestData.People.Select(person => (IEnumerable<char>)person.FirstName.ToCharArray()).Aggregate((name, nextName) => name.Intersect(nextName));
-
-            Assert.IsTrue(commonCharacters.OrderBy(x => x).SequenceEqual(new char[] { 'a', 'i', 'J' }.OrderBy(x => x)));
+            Assert.IsTrue(commonCharacters.OrderBy(x => x).SequenceEqual(new char[] { 'J' }.OrderBy(x => x)));
         }
 
         // Bonus Question
@@ -51,16 +47,9 @@ namespace LINQ.Exercises
         public void GetCharactersCommonToEveryonesFirstNamesNotUsingSetOperations_ReturnCharEnumerable()
         {            
             IEnumerable<IEnumerable<char>> names = TestData.People.Select(person => person.FirstName.ToCharArray());      
-            IEnumerable<char> result = names.Aggregate((name, nextName) => { 
-                List<char> commLetters = new List<char>(); 
-                foreach (char letter in name)
-                {                    
-                        if (nextName.Contains(letter)) commLetters.Add(letter);                   
-                }
-                return commLetters;
-            });
+            IEnumerable<char> result = names.Aggregate((name, nextName) => name.Where(nextName.Contains));
 
-            Assert.IsTrue(result.OrderBy(x => x).SequenceEqual(new char[] { 'a', 'i', 'J' }.OrderBy(x => x)));
+            Assert.IsTrue(result.OrderBy(x => x).SequenceEqual(new char[] { 'J' }.OrderBy(x => x)));
         }
 
     }
