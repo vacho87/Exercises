@@ -28,7 +28,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void GetFirstTwoNumbers_returns_2_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.Take(2);
 
             Assert.IsTrue(result.SequenceEqual(new[] { 5, 4 }));
         }
@@ -37,7 +37,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void IgnoreFirstFourNumbers_returns_4_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.Skip(4);
 
             Assert.IsTrue(result.SequenceEqual(new[] { 9, 8, 6, 7, 2, 0 }));
         }
@@ -47,7 +47,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void Enumerate_Till_You_Get_A_Number_NotLessThanSix_returns_4_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.TakeWhile(number => number <= 6);
 
             Assert.IsTrue(result.SequenceEqual(new[] { 5, 4, 1, 3 }));
         }
@@ -57,7 +57,15 @@ namespace LINQ.Exercises
         [TestMethod]
         public void Enumerate_Till_A_Number_Hit_Which_is_less_than_its_own_array_position_returns_2_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            // Здесь нагородил чего-то и оно как-то работает, НО
+            // 1. Приведение интерфейсного свойства PartitionNumbers к типу int [] это экспромт (типа методом тыка) и правильно ли это
+            // 2. Метод IndexOf() возвращает первое вхождение значения переменной number в массив а не индекс конкретного элемента,
+            // на который ссылается переменная number. То есть если бы источник данных выглядел бы, например, следующим образом:
+            // new int[] { 5, 4, 4, 4, 4, 4, 4, 1, 3, 9, 8, 6, 7, 2, 0 }; , то мой запрос бы дал неверный результат, так как каждый раз 
+            // условие отбора ложно удовлетворялось бы и в результирующую выборку попали бы все четверки, хотя для четверки с нидексом 5 
+            // фактически условие не выполняется.
+            // Можно пример правильного решения?
+            IEnumerable<int> result = TestData.PartitionNumbers.TakeWhile(number => number >= System.Array.IndexOf(TestData.PartitionNumbers as int [], number));
 
             Assert.IsTrue(result.SequenceEqual(new[] { 5, 4 }));
         }
@@ -67,7 +75,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void GetElementsOfArrayStartingFromTheFirstElementDivisibleByThree_Return7ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.SkipWhile(number => number % 3 != 0);
 
             Assert.IsTrue(result.SequenceEqual(new[] { 3, 9, 8, 6, 7, 2, 0 }));
         }
@@ -77,7 +85,9 @@ namespace LINQ.Exercises
         [TestMethod]
         public void GetElementsStartingFromFirstElementLessThanItsPosition_Return8ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            // я все же нашел какой-то корявенький спопосб получить индекс переменной number внутри массива
+            int index = 0;
+            IEnumerable<int> result = TestData.PartitionNumbers.SkipWhile(number => number >= index++);
 
             Assert.IsTrue(result.SequenceEqual(new[] { 1, 3, 9, 8, 6, 7, 2, 0 }));
         }

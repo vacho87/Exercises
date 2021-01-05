@@ -37,14 +37,14 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderWordsAlphabetically_Return5Words()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended;
+            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderBy(word => word);
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "blueberry", "cherry", "tamarind", "zuchini" }));
         }
 
         [TestMethod]
         public void OrderWordsBySecondLetter_Return5Words()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended;
+            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderBy(word => word.ToCharArray()[1]);
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "tamarind", "cherry", "blueberry", "apple", "zuchini" }));
         }
@@ -53,7 +53,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderWordsByFirstLetterDescendingAlphabetically_Return5Words()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended;
+            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderByDescending(word => word);
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "zuchini", "tamarind", "cherry", "blueberry", "apple", }));
         }
@@ -62,7 +62,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderWordsByByLength_Return3Words()
         {
-            IEnumerable<string> result = TestData.OrderByWords;
+            IEnumerable<string> result = TestData.OrderByWords.OrderBy(word => word.Length);
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "cherry", "blueberry" }));
         }
@@ -70,7 +70,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderByPeopleByPersonsLastNameAlphabetically_returnOrderedPeople()
         {
-            IEnumerable<TestData.Person> result = TestData.People;
+            IEnumerable<TestData.Person> result = TestData.People.OrderBy(person => person.LastName.First());
 
             Assert.IsTrue(result.SequenceEqual(new TestData.Person[]
             {
@@ -92,7 +92,25 @@ namespace LINQ.Exercises
         {
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            var result = words;
+            // Вот здесь сортировка по-умолчанию сработала с IgnoreCase и тест пройден, НО
+            // решить это нужно было по-другому, создав свой собственный класс, реализовав в нем интерфейс
+            // IComparer (или IComparable?) или унаследоваться от класса Comparer
+            // И здесь у меня два вопроса:
+            //
+            // 1. Допустим я создал класс, унаследовав его от Comparer или реализовав один из интрефейсов,
+            // но как потом я должен был применить его? Ведь в сортируемом массиве хранятся данные строкового типа,
+            // а не выведенного мной. Мне нужно было в лямбда-выражении каким-то образом привести строковые элементы массива
+            // к моему пользовательскому типу и вернуть результат реализованного в пользовательском типе сравнения? Или как?
+            //
+            // 2. Так и не понял, что предпочтительней - наследование класса от Comparer, или реализация одного из интерфейсов
+            // (если релизация интерфейсов, то что предпочтительней Icomparer или Icomparable)? 
+            // Точнее мне не понятно почему предпочтительнее наследование нежели реализация. Все обсуждения этого вопроса на форумах, что я прочитал,
+            // цитируют все тот же MSDN, после которого я на эти форумы полез.
+            // Не мог бы ты мне пояснить почему именно наследование (в каких ситуациях это выгодно), и если наследование предпочтительнее, 
+            // то как быть в случаях, когда мне нужно наследовать свой класс от другого класса (естественно не Comparer),
+            // но в то же время необходимо реализовать функционал сравнения, ведь множественного наследования нет в C#.
+            // И если все же выбыирать реализацию интерфейса (опять же, когда это выгодно или необходимо?), то какой из них в каких случаях применять? 
+            var result = words.OrderBy(word => word);
 
             Assert.IsTrue(result.SequenceEqual(new string[] {
                 "AbAcUs", "aPPLE", "BlUeBeRrY", "bRaNcH", "cHeRry", "ClOvEr"
@@ -116,7 +134,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderAssumingSpecialCondition_ReturnSpecialEnumeration()
         {
-            IEnumerable<string> result = TestData.OrderByWordsExtended;
+            IEnumerable<string> result = TestData.OrderByWordsExtended.OrderBy(word => word.Length % 2 == 0 ? word.Length*2 : word.Length);
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "apple", "zuchini", "blueberry", "cherry", "tamarind" }));
         }
@@ -126,7 +144,7 @@ namespace LINQ.Exercises
         {
             double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 };
 
-            IEnumerable<double> result = doubles;
+            IEnumerable<double> result = doubles.OrderByDescending(number => number);
 
             Assert.IsTrue(result.SequenceEqual(new double[] { 4.1, 2.9, 2.3, 1.9, 1.7 }));
         }
@@ -134,7 +152,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderByBirthDatesOldestToYoungest_returnPersonEnumeration()
         {
-            IEnumerable<TestData.Person> result = TestData.People;
+            IEnumerable<TestData.Person> result = TestData.People.OrderBy(person => person.Born.Date);
 
             Assert.IsTrue(result.SequenceEqual(new TestData.Person[] {
                     new TestData.Person("Jean", "Gean", new DateTime(1950, 12, 1)),
@@ -147,7 +165,7 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderByBirthDatesYoungestToOldest_returnPersonEnumeration()
         {
-            IEnumerable<TestData.Person> result = TestData.People;
+            IEnumerable<TestData.Person> result = TestData.People.OrderByDescending(person => person.Born.Date);
 
             Assert.IsTrue(result.SequenceEqual(new TestData.Person[] {
                     new TestData.Person("Jill", "Lill", new DateTime(2001, 5, 21)),
@@ -161,7 +179,7 @@ namespace LINQ.Exercises
         public void OrderByLengthAndThenAlphabetically_returnStringNumberation()
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-            IEnumerable<string> result = digits;
+            IEnumerable<string> result = digits.OrderBy(digit => digit.Length).ThenBy(digit => digit);
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "one", "six", "two", "five", "four", "nine", "zero", "eight", "seven", "three" }));
         }
@@ -179,7 +197,7 @@ namespace LINQ.Exercises
 
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            IEnumerable<string> result = words;
+            IEnumerable<string> result = words.OrderBy(word => word.Length).ThenBy(word => word);
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "aPPLE", "AbAcUs", "bRaNcH", "cHeRry", "ClOvEr", "BlUeBeRrY" }));
         }
@@ -191,7 +209,7 @@ namespace LINQ.Exercises
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            IEnumerable<string> result = digits;
+            IEnumerable<string> result = digits.Reverse().Where(word => word[1] == 'i');
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "nine", "eight", "six", "five" }));
         }
