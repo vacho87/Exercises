@@ -14,8 +14,7 @@ namespace LINQ.Exercises
     /// available to him or her.
     /// </summary>
 
-    // Почему-то методы этого класса не отображаются в ТестЭксплорере
-    // но в случае копирования в другой класс, например в SetOperations все исправно работает
+    
     [TestClass]
     public class CombinedOperations
     {

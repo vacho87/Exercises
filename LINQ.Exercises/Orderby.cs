@@ -90,27 +90,8 @@ namespace LINQ.Exercises
         [TestMethod]
         public void OrderAlphabeticallyAssumingCaseInsensitivity_ReturnCaseInsensitiveEnumeration()
         {
-            string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
-
-            // Вот здесь сортировка по-умолчанию сработала с IgnoreCase и тест пройден, НО
-            // решить это нужно было по-другому, создав свой собственный класс, реализовав в нем интерфейс
-            // IComparer (или IComparable?) или унаследоваться от класса Comparer
-            // И здесь у меня два вопроса:
-            //
-            // 1. Допустим я создал класс, унаследовав его от Comparer или реализовав один из интрефейсов,
-            // но как потом я должен был применить его? Ведь в сортируемом массиве хранятся данные строкового типа,
-            // а не выведенного мной. Мне нужно было в лямбда-выражении каким-то образом привести строковые элементы массива
-            // к моему пользовательскому типу и вернуть результат реализованного в пользовательском типе сравнения? Или как?
-            //
-            // 2. Так и не понял, что предпочтительней - наследование класса от Comparer, или реализация одного из интерфейсов
-            // (если релизация интерфейсов, то что предпочтительней Icomparer или Icomparable)? 
-            // Точнее мне не понятно почему предпочтительнее наследование нежели реализация. Все обсуждения этого вопроса на форумах, что я прочитал,
-            // цитируют все тот же MSDN, после которого я на эти форумы полез.
-            // Не мог бы ты мне пояснить почему именно наследование (в каких ситуациях это выгодно), и если наследование предпочтительнее, 
-            // то как быть в случаях, когда мне нужно наследовать свой класс от другого класса (естественно не Comparer),
-            // но в то же время необходимо реализовать функционал сравнения, ведь множественного наследования нет в C#.
-            // И если все же выбыирать реализацию интерфейса (опять же, когда это выгодно или необходимо?), то какой из них в каких случаях применять? 
-            var result = words.OrderBy(word => word);
+            string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };                        
+            var result = words.OrderBy(word => word, new MyStringComparer());
 
             Assert.IsTrue(result.SequenceEqual(new string[] {
                 "AbAcUs", "aPPLE", "BlUeBeRrY", "bRaNcH", "cHeRry", "ClOvEr"
@@ -197,7 +178,7 @@ namespace LINQ.Exercises
 
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            IEnumerable<string> result = words.OrderBy(word => word.Length).ThenBy(word => word);
+            IEnumerable<string> result = words.OrderBy(word => word.Length).ThenBy(word => word, new MyStringComparer());
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "aPPLE", "AbAcUs", "bRaNcH", "cHeRry", "ClOvEr", "BlUeBeRrY" }));
         }
@@ -209,9 +190,19 @@ namespace LINQ.Exercises
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            IEnumerable<string> result = digits.Reverse().Where(word => word[1] == 'i');
+            IEnumerable<string> result = digits.Where(word => word[1] == 'i').Reverse();
 
             Assert.IsTrue(result.SequenceEqual(new string[] { "nine", "eight", "six", "five" }));
         }
+
+        class MyStringComparer : Comparer<string>
+        {
+            public override int Compare(string s1, string s2)
+            {
+                return string.Compare(s1, s2, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+
     }
 }
