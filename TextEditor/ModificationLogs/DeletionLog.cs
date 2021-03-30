@@ -12,9 +12,9 @@ namespace TextEditor
             deletedSymbol = delSymb;
         }
 
-        public void UndoModification()
+        public void UndoModification(TextEditor textEditor)
         {
-            TextEditor.Output += deletedSymbol;
+            textEditor.Output += deletedSymbol;
         }
     }
 }

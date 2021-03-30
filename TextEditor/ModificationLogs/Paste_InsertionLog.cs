@@ -11,9 +11,9 @@ namespace TextEditor.ModificationLoggers
         {
             insertionLength = insertedTextLength;
         }
-        public void UndoModification()
+        public void UndoModification(TextEditor textEditor)
         {
-            TextEditor.Output = TextEditor.Output.Remove(TextEditor.Output.Length - insertionLength);
+            textEditor.Output = textEditor.Output.Remove(textEditor.Output.Length - insertionLength);
         }
     }
 }

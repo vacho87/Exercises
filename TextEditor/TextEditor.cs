@@ -5,9 +5,9 @@ using TextEditor.ModificationLoggers;
 
 namespace TextEditor
 {
-    class TextEditor
+    public class TextEditor
     {
-        public static string Output { get; set; }
+        public string Output { get; set; }
                 
         private static readonly List<IModification> modificationLogs = new List<IModification>();
         public string Buffer { get; private set; } = null;
@@ -81,21 +81,12 @@ namespace TextEditor
             }
             else
             {
-                modificationLogs[0].UndoModification();
+                modificationLogs[0].UndoModification(this);
                 modificationLogs.RemoveAt(0);
             }
 
         }
-
-        public void DisplayText()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("\nTEXT: ");
-            Console.ResetColor();
-            Console.WriteLine(Output);
-        }
-
-        
+              
                 
     }
     

@@ -6,6 +6,6 @@ namespace TextEditor
 {
     interface IModification
     {
-        void UndoModification();
+        void UndoModification(TextEditor textEditor);
     }
 }

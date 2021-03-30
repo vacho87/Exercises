@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TextEditor
 {
-    class TextEditorManager
+    class TextEditorConsoleController
     {
-        public static TextEditor StartTextEditor()
+        public TextEditor StartTextEditor()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.SetCursorPosition((Console.WindowWidth - 50) / 2, 0);
@@ -25,11 +25,11 @@ namespace TextEditor
                 textEditor = new TextEditor(str);
             }
 
-            textEditor.DisplayText();
+            DisplayText(textEditor);
             return textEditor;
         }
 
-        public static void ManageTextEditor(TextEditor textEditor)
+        public void ManageTextEditor(TextEditor textEditor)
         {
             string command;
             do
@@ -76,7 +76,7 @@ namespace TextEditor
                         ReportOfError(ex.Message);
                     }
                     
-                    textEditor.DisplayText();
+                    DisplayText(textEditor);
                 }
                 else
                 {
@@ -142,6 +142,14 @@ namespace TextEditor
                 }
             }
             
+        }
+
+        public void DisplayText(TextEditor textEditor)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("\nTEXT: ");
+            Console.ResetColor();
+            Console.WriteLine(textEditor.Output);
         }
 
     }
